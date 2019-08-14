@@ -9,11 +9,10 @@ import {Appbar,
         Text,
         Button
         } from 'react-native-paper'
-import Icon from 'react-native-vector-icons/Ionicons'
 import { SearchBar} from 'react-native-elements';
-
 import Slideshow from 'react-native-slideshow/Slideshow'
 
+import ExploreHeader from '../components/ExploreHeader'
 const data = [
   {  img : require('../../asset/bandung.jpg'), title: 'Bandung'},
   { img : require('../../asset/jakarta.jpg'), title: 'Jakarta'},
@@ -68,6 +67,10 @@ class Explore extends Component {
       componentWillUnmount() {
         clearInterval(this.state.interval);
       }
+      static navigationOptions = {
+        // headerTitle instead of title
+        headerTitle: <ExploreHeader />,
+      };
 
     render(){
         
@@ -75,7 +78,7 @@ class Explore extends Component {
           <ScrollView  > 
             <View>
               
-                <Appbar.Header>
+                {/* <Appbar.Header>
                     <Appbar.Action  
                         icon='home'
                     />
@@ -83,15 +86,15 @@ class Explore extends Component {
                         title="AbahKos"
                     />
 
-                </Appbar.Header>
+                </Appbar.Header> */}
                 <View>
                 <SearchBar        
-      placeholder="Type Here..."        
-      lightTheme        
-      round        
-      onChangeText={text => this.searchFilterFunction(text)}
-      autoCorrect={false}             
-    />    
+                  placeholder="Type Here..."        
+                  lightTheme        
+                  round        
+                  onChangeText={text => this.searchFilterFunction(text)}
+                  autoCorrect={false}             
+                />    
                 </View>
                 
                   <View style={styles.container}>
@@ -139,7 +142,8 @@ class Explore extends Component {
                                 keyExtractor={(item) =>  item.title }
                                 data = {this.state.data}
                               renderItem={({item : rowData}) => {
-                                return(                                  
+                                return(
+                                <TouchableOpacity onPress={ () => {this.props.navigation.navigate('KostList')}}>                                  
                                 <View style={styles.content}>
                                     <View style={{flex : 2}}>
                                     <Image source={rowData.img} style={styles.img}
@@ -149,7 +153,7 @@ class Explore extends Component {
                                         <Text style={{color: '#fff'}}>{rowData.title}</Text>
                                     </View> 
                                 </View>
-                                
+                                </TouchableOpacity>
                                 
                                 )}} />
                                 

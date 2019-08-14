@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Image,  FlatList,} from 'react-native'
 
+import KostListItem from '../components/KostListItem'
+
 //const {height, width} = Dimensions.get('window');
 
 const data = [
@@ -54,35 +56,36 @@ const data = [
         return(
             <View>  
             <FlatList    
-          keyExtractor={(item) =>  item.title }
-          data = {this.state.data}
-          renderItem={({item : rowData}) => 
-          {
-                return(                                  
-                <View style = {styles.listContainer}>
-                    <Image 
-                        source={rowData.img} 
-                        style={styles.img}
-                    />
-                    <View style={styles.detailContainer}>
-                        <Text
-                            style={{color : 'red'}}
-                        >{rowData.jenis}  </Text>
-                        <Text
-                            style={{color : 'red'}}
-                        >{rowData.kamar}  </Text>
-                        <Text
-                            style={{color : 'black'}}
-                        >{rowData.lokasi}</Text>
-                    </View>
-                    <Text
-                            style={styles.textHarga}
-                        >{rowData.harga}</Text>
-                    <Text
-                            style={styles.textJudul}
-                        >{rowData.judul}</Text>
+                keyExtractor={(item) =>  item.title }
+                data = {this.state.data}
+                renderItem={({item }) => 
+                {
+                return( 
+                    <KostListItem item={item} navigation={this.props.navigation}/>                                 
+                // <View style = {styles.listContainer}>
+                //     <Image 
+                //         source={rowData.img} 
+                //         style={styles.img}
+                //     />
+                //     <View style={styles.detailContainer}>
+                //         <Text
+                //             style={{color : 'red'}}
+                //         >{rowData.jenis}  </Text>
+                //         <Text
+                //             style={{color : 'red'}}
+                //         >{rowData.kamar}  </Text>
+                //         <Text
+                //             style={{color : 'black'}}
+                //         >{rowData.lokasi}</Text>
+                //     </View>
+                //     <Text
+                //             style={styles.textHarga}
+                //         >{rowData.harga}</Text>
+                //     <Text
+                //             style={styles.textJudul}
+                //         >{rowData.judul}</Text>
     
-                </View>
+                // </View>
                 
                 
                 )}} />
