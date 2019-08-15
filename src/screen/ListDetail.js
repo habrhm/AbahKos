@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
-import {View, Dimensions, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, Dimensions, Image, StyleSheet, TouchableOpacity, Share} from 'react-native'
 import MapView from 'react-native-maps'
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base'
-import { SliderBox } from 'react-native-image-slider-box';
 
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Slideshow from 'react-native-slideshow/Slideshow'
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
-import ReadMore from 'react-native-read-more-text';
 
-import BookingBar from '../components/BookingBar'
+
+
 import Fasilitas from '../components/Fasilitas'
 import RekomendasiKostItem from '../components/RekomendasiKostItem'
 
@@ -108,8 +107,16 @@ const data = [
         })
       }
 
+      handleShare = async () => {
+        try{
+            const result = await Share.share({
+                message : 'Share'
+            })
+        }catch(ex){
+            alert(ex.message)
+        }
+      }
     render(){
-        const { region } = this.props;
         return(
             <Container>
              <Header style={{
@@ -124,7 +131,7 @@ const data = [
                     <Title style={{color : 'green'}}></Title>
                 </Body>
                 <Right>
-                <Button transparent onPress={() => this.props.navigation.goBack()}>
+                <Button transparent onPress={this.handleShare}>
                         <Icon name='share' style={{color : 'green'}}/>
                     </Button>
                 </Right>
