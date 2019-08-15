@@ -321,7 +321,11 @@ const data = [
                         </Text>
                         <View style={styles.fasilitasContainer}>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <Fasilitas icon='bed' name='kasur'/>
+                                <Fasilitas icon='md-bed' name='Kasur'/>
+                                <Fasilitas icon='md-bed' name='Kamar mandi dalam'/>
+                                <Fasilitas icon='md-thermometer' name='AC'/>
+                                <Fasilitas icon='md-wifi' name='Wifi - Internet'/>
+                            
                             </ScrollView>
                         </View>
                     </View>

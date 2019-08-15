@@ -8,7 +8,7 @@ export default class KostListItem extends React.Component {
     render() {
       return (
         
-        <TouchableHighlight
+        <TouchableHighlight key = {this.props.item.id}
             onPress={() => this.props.navigation.navigate('KostDetail')}
         >
             <Card>

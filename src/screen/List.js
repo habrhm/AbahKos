@@ -6,48 +6,58 @@ import KostListItem from '../components/KostListItem'
 //const {height, width} = Dimensions.get('window');
 
 const data = [
-    {  img : require('../../asset/bandung.jpg'),
-     judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-     jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Cileungsi',
-    harga: 500000,
-    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+    {
+        id : '1',  
+        img : require('../../asset/bandung.jpg'),
+        judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
+        jenis: 'Putra',
+        kamar: 'Tinggal 2 Kamar',
+        lokasi: 'Cileungsi',
+        harga: 500000,
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
     },
-    {  img : require('../../asset/jakarta.jpg'),
-    judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
-    jenis: 'Putri',
-    kamar: 'Penuh',
-    lokasi: 'Cileunyi',
-    harga: 'Rp 1.000.000/bulan',
-    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+    {  
+        id : '2',
+        img : require('../../asset/jakarta.jpg'),
+        judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
+        jenis: 'Putri',
+        kamar: 'Penuh',
+        lokasi: 'Cileunyi',
+        harga: 'Rp 1.000.000/bulan',
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
-    {  img : require('../../asset/surabaya.jpg'),
-    judul : 'Kost Abah Eman',
-    jenis: 'Campur',
-    kamar: 'Tinggal 10 Kamar',
-    lokasi: 'Cibiru',
-    harga: 'Rp 500.000/bulan',
-    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+    {  
+        id : '3',
+        img : require('../../asset/surabaya.jpg'),
+        judul : 'Kost Abah Eman',
+        jenis: 'Campur',
+        kamar: 'Tinggal 10 Kamar',
+        lokasi: 'Cibiru',
+        harga: 'Rp 500.000/bulan',
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
-    {  img : require('../../asset/malang.jpg'),
-    judul : 'Kost Abah Maman',
-    jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Cikoneng',
-    harga: 'Rp 1.200.300/bulan',
-    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+    {  
+        id : '4',
+        img : require('../../asset/malang.jpg'),
+        judul : 'Kost Abah Maman',
+        jenis: 'Putra',
+        kamar: 'Tinggal 2 Kamar',
+        lokasi: 'Cikoneng',
+        harga: 'Rp 1.200.300/bulan',
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
-    {  img : require('../../asset/yogyakarta.jpg'),
-    judul : 'Kost Abah Udin',
-    jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Ciherang',
-    harga: 'Rp 1.000/bulan',
-    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+    {  
+        id : '5',
+        img : require('../../asset/yogyakarta.jpg'),
+        judul : 'Kost Abah Udin',
+        jenis: 'Putra',
+        kamar: 'Tinggal 2 Kamar',
+        lokasi: 'Ciherang',
+        harga: 'Rp 1.000/bulan',
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
   ];
@@ -65,12 +75,12 @@ const data = [
         return(
             <View style={{padding : 10}}>  
                 <FlatList    
-                keyExtractor={(item) =>  item.title }
+                keyExtractor={(item) =>  item.id}
                 data = {this.state.data}
                 renderItem={({item }) => 
                 {
                 return( 
-                    <KostListItem item={item} navigation={this.props.navigation}/>                                 
+                    <KostListItem  key={item.id} item={item} navigation={this.props.navigation}/>                                 
                 // <View style = {styles.listContainer}>
                 //     <Image 
                 //         source={rowData.img} 
