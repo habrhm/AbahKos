@@ -6,6 +6,7 @@ import MenuRoute from './src/routes/MainMenuRoute'
 import List from './src/screen/List';
 import ListDetail from './src/screen/ListDetail'
 import LoginForm from './src/screen/LoginForm'
+import RegisterForm from './src/screen/RegisterForm'
 import PasangIklan from './src/screen/PasangIklan'
 import BookingKost from './src/screen/BookingKost'
 
@@ -37,6 +38,14 @@ const AppNavigator = createStackNavigator(
     },
     BookingKost: {
         screen:   BookingKost
+    
+    },
+
+    RegisterForm: {
+      screen: RegisterForm,
+      navigationOptions:{
+          header : null
+          }
     },
     
     

@@ -6,7 +6,7 @@ import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Tit
 
 
 
-export default class App extends Component {
+export default class RegisterForm extends Component {
 
     render(){
         return(
@@ -20,13 +20,13 @@ export default class App extends Component {
                     </Button>
                 </Left>
                 <Body>
-                    <Title style={{color : 'green'}}>Login</Title>
+                    <Title style={{color : 'green'}}>Register</Title>
                 </Body>
                 <Right />
                 </Header>
                 <Content>
                   
-                        <H1 style={{padding : 20, alignSelf :'center'}} >Login</H1>
+                        <H1 style={{padding : 20, alignSelf :'center'}} >Register</H1>
                         <Form style={{paddingBottom : 10}}>
                             <Item floatingLabel>
                                 <Label>Username</Label>
@@ -36,17 +36,25 @@ export default class App extends Component {
                                 <Label>Password</Label>
                                 <Input />
                             </Item>
+                            <Item floatingLabel>
+                                <Label>Email</Label>
+                                <Input />
+                            </Item>
+                            <Item floatingLabel>
+                                <Label>No Hp</Label>
+                                <Input />
+                            </Item>
                             
                             
                             
                         </Form>
                         <Button rounded block success style={{margin :10}}>
-                                <Text>Login</Text>
+                                <Text>Register</Text>
                                 
                         </Button>
                         <View  style={{alignSelf:'center', padding: 20, flexDirection : 'row'}}>
-                            <Text>Belum Punya Akun ? </Text>
-                            <Text style={{color : 'green'}} onPress={() => this.props.navigation.navigate('RegisterForm')}>Register</Text>
+                            <Text>Sudah Punya Akun ? </Text>
+                            <Text style={{color : 'green'}} onPress={() => this.props.navigation.navigate('LoginForm')}>Login</Text>
 
                         </View>
                     
