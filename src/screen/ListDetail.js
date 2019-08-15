@@ -1,18 +1,20 @@
 import React, {Component} from 'react'
-import {View, Text, Dimensions, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import {View, Dimensions, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import MapView from 'react-native-maps'
-import { Appbar } from 'react-native-paper';
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base'
 import { SliderBox } from 'react-native-image-slider-box';
-import Icon from 'react-native-vector-icons/Ionicons'
+
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Slideshow from 'react-native-slideshow/Slideshow'
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import ReadMore from 'react-native-read-more-text';
 
 import BookingBar from '../components/BookingBar'
+import Fasilitas from '../components/Fasilitas'
+import RekomendasiKostItem from '../components/RekomendasiKostItem'
 
 
-const {height, width} = Dimensions.get('window');
+
 
 const data = [
     {  img : require('../../asset/bandung.jpg'),
@@ -109,17 +111,26 @@ const data = [
     render(){
         const { region } = this.props;
         return(
-            <View style={{flex : 1}}>
-                
-                <Appbar.Header>
-                    <Appbar.BackAction />
-                    <Appbar.Action style ={{position:"absolute",  right: 0}}
-                        icon ='share'
-                    />
-                </Appbar.Header>
-                <ScrollView stickyHeaderIndices={[11]} invertStickyHeaders={true}>
-
-                    <View 
+            <Container>
+             <Header style={{
+                    backgroundColor : 'white'
+                }}>
+                <Left>
+                    <Button transparent onPress={() => this.props.navigation.goBack()}>
+                        <Icon name='arrow-back' style={{color : 'green'}}/>
+                    </Button>
+                </Left>
+                <Body>
+                    <Title style={{color : 'green'}}></Title>
+                </Body>
+                <Right>
+                <Button transparent onPress={() => this.props.navigation.goBack()}>
+                        <Icon name='share' style={{color : 'green'}}/>
+                    </Button>
+                </Right>
+            </Header>
+            <Content>
+                <View 
                         style={{
                             height: 200,
                             display : this.state.imageDisplay} }> 
@@ -287,46 +298,7 @@ const data = [
                         </Text>
                         <View style={styles.fasilitasContainer}>
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                            <View style={styles.fasiltas}>
-                                <MaterialIcon name={'room'} color='green' size = {30} style={{margin : 5}} />
-                                <Text>
-                                    Kamar
-                                </Text>
-                            </View>
-                            <View style={styles.fasiltas}>
-                                <MaterialIcon name={'share'} color='green' size = {30} style={{margin : 5}} />
-                                <Text>
-                                    Kasur
-                                </Text>
-                            </View>
-                            <View style={styles.fasiltas}>
-                                <MaterialIcon name={'share'} color='green' size = {30} style={{margin : 5}} />
-                                <Text>
-                                    Kasur
-                                </Text>
-                            </View>
-                            <View style={styles.fasiltas}>
-                                <MaterialIcon name={'share'} color='green' size = {30} style={{margin : 5}} />
-                                <Text>
-                                    Kasur
-                                </Text>
-                            </View>
-                            <View style={styles.fasiltas}>
-                                <MaterialIcon name={'share'} color='green' size = {30} style={{margin : 5}} />
-                                <Text>
-                                    Kasur
-                                </Text>
-                            </View><View style={styles.fasiltas}>
-                                <MaterialIcon name={'share'} color='green' size = {30} style={{margin : 5}} />
-                                <Text>
-                                    Kasur
-                                </Text>
-                            </View><View style={styles.fasiltas}>
-                                <MaterialIcon name={'share'} color='green' size = {30} style={{margin : 5}} />
-                                <Text>
-                                    Kasur
-                                </Text>
-                            </View>
+                            <Fasilitas icon='bed' name='kasur'/>
                             </ScrollView>
                         </View>
                     </View>
@@ -360,50 +332,37 @@ const data = [
                             showsHorizontalScrollIndicator={false}
                             keyExtractor={(item) =>  item.title }
                             data = {this.state.data}
-                            renderItem = {({item : rowData}) => {
+                            renderItem = {({item}) => {
                                 return(
-                                    <View style={{
-                                        width: 100,
-                                        borderColor:'silver',
-                                        borderWidth:1 ,
-                                        borderRadius : 5
-                                            }}>
-                                        <Text>{rowData.kamar}</Text>
-                                        <Image 
-                                            style={{width : 98,
-                                                    height : 150
-                                            }}
-                                            source={require('../../asset/bandung.jpg')}/>
-                                        <View style={{
-                                            position : 'absolute',
-                                            //top: 0,
-                                            left: 0, 
-                                            right: 0,
-                                            bottom: 0,
-                                            backgroundColor: 'black' 
-        
-                                        }
-                                        }>
-                                            <View style={{flexDirection: 'row'}}>
-                                                <Text numberOfLines={1} style={{flex : 1}}>1.500.000</Text>
-                                                <Text style={{flex : 1}}>Putri</Text>
-                                            </View>
-                                            <View style={{flexDirection: 'row'}}>
-                                                <Text numberOfLines={1} style={{flex : 1}}>Kost Abah js jsia jsa</Text>
-                                                <Text style={{flex : 1}}>Bandung</Text>
-                                            </View>
-                                        </View>
-                                    </View>
                                     
+                                    <RekomendasiKostItem item = {item} navigation={this.props.navigation}/>
                                 )
                             }}
                         />   
                     </View>
 
-                    <BookingBar/>
-
-                </ScrollView>
-            </View>
+            </Content>
+            <Footer>
+                <FooterTab style={{backgroundColor:'white', borderTopWidth : 1}}>
+                    <View style={{flex : 1, alignItems:"center",padding : 20}}>
+                        <Text style={{alignSelf : 'center', color : 'green'}}>
+                            Rp.100.000,00 
+                        </Text>
+                    </View>
+                    <View style={{flexDirection : 'row', flex : 1 }}>
+                        <Button style={{borderWidth : 1, borderColor : 'red', borderRadius : 10, marginHorizontal : 2}}>
+                            <Text style={{ color : 'red'}}>Hubungi</Text>
+                        </Button>
+                        <Button style={{borderWidth : 1, borderColor : 'red', borderRadius : 10, marginHorizontal : 2}}
+                            onPress={()=>this.props.navigation.navigate('BookingKost')}
+                        >
+                            <Text style={{ color : 'red'}}>Booking</Text>
+                        </Button>
+                    </View>
+                </FooterTab>
+            </Footer>
+          </Container>
+       
         )
     }
 

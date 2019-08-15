@@ -1,6 +1,6 @@
 import React, {Component } from 'react'
 import {View} from 'react-native'
-import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text, Footer, Form, Item, Input, FooterTab, H1 } from 'native-base'
+import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text,  Form, Item, Input,  H1 } from 'native-base'
 
 
 
