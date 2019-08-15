@@ -2,22 +2,34 @@ import React from 'react'
 import {Text, View, StyleSheet, Image, TouchableHighlight} from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import {  } from 'react-native-gesture-handler';
+import { Card } from 'react-native-paper';
 
 export default class RekomendasiKostItem extends React.Component {
     render() {
       return (
         <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('KostDetail')}
+            onPress={() => this.props.navigation.push('KostDetail')}
         >
+            
             <View style={{
-                width: 100,
-                borderColor:'silver',
-                borderWidth:1 ,
-                borderRadius : 5
+                width: 200,
+                borderColor:'transparent',
+                borderWidth:2 ,
+                borderRadius : 0,
+                marginHorizontal : 5,
+                elevation :2,
+                
                     }}>
-                <Text>{this.props.item.kamar}</Text>
+                
+                <Text style={{
+                    backgroundColor : 'red',
+                    borderTopLeftRadius : 0,
+                    textAlign : 'center',
+                    color : 'white'
+
+                }}>{this.props.item.kamar}</Text>
                     <Image 
-                        style={{width : 98,
+                        style={{width : 196,
                                 height : 150
                         }}
                         source={this.props.item.img}/>
@@ -32,16 +44,17 @@ export default class RekomendasiKostItem extends React.Component {
                     }
                     }>
                         <View style={{flexDirection: 'row'}}>
-                            <Text numberOfLines={1} style={{flex : 1}}>{this.props.item.harga}</Text>
-                            <Text style={{flex : 1}}>{this.props.item.jenis}</Text>
+                            <Text numberOfLines={1} style={{flex : 1, fontSize : 20}}>{this.props.item.harga}</Text>
+                            <Text style={{flexShrink : 1, fontSize : 20, paddingHorizontal:5}}>{this.props.item.jenis}</Text>
                         </View>
                         <View style={{flexDirection: 'row'}}>
-                        <Text numberOfLines={1} style={{flex : 1}}>{this.props.item.judul}</Text>
-                            <Text style={{flex : 1}}>{this.props.item.lokasi}</Text>
+                        <Text numberOfLines={1} style={{flex : 1, }}>{this.props.item.judul}</Text>
+                            <Text style={{flexShrink : 1, paddingHorizontal:5}}>{this.props.item.lokasi}</Text>
                         </View>
                     </View>
 
             </View>
+            
         </TouchableHighlight>
       );
     }

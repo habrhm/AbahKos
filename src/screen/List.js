@@ -11,7 +11,8 @@ const data = [
      jenis: 'Putra',
     kamar: 'Tinggal 2 Kamar',
     lokasi: 'Cileungsi',
-    harga: 'Rp 500.000/bulan',
+    harga: 500000,
+    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
     },
     {  img : require('../../asset/jakarta.jpg'),
     judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
@@ -19,6 +20,8 @@ const data = [
     kamar: 'Penuh',
     lokasi: 'Cileunyi',
     harga: 'Rp 1.000.000/bulan',
+    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
     {  img : require('../../asset/surabaya.jpg'),
     judul : 'Kost Abah Eman',
@@ -26,6 +29,8 @@ const data = [
     kamar: 'Tinggal 10 Kamar',
     lokasi: 'Cibiru',
     harga: 'Rp 500.000/bulan',
+    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
     {  img : require('../../asset/malang.jpg'),
     judul : 'Kost Abah Maman',
@@ -33,6 +38,8 @@ const data = [
     kamar: 'Tinggal 2 Kamar',
     lokasi: 'Cikoneng',
     harga: 'Rp 1.200.300/bulan',
+    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
     {  img : require('../../asset/yogyakarta.jpg'),
     judul : 'Kost Abah Udin',
@@ -40,6 +47,8 @@ const data = [
     kamar: 'Tinggal 2 Kamar',
     lokasi: 'Ciherang',
     harga: 'Rp 1.000/bulan',
+    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
   ];
 
@@ -54,8 +63,8 @@ const data = [
      
     render(){
         return(
-            <View>  
-            <FlatList    
+            <View style={{padding : 10}}>  
+                <FlatList    
                 keyExtractor={(item) =>  item.title }
                 data = {this.state.data}
                 renderItem={({item }) => 

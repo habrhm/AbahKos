@@ -1,15 +1,60 @@
 import React from 'react'
-import {Text, View, StyleSheet, Image, TouchableHighlight} from 'react-native'
+import {View, StyleSheet, Image, TouchableHighlight,} from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import {  } from 'react-native-gesture-handler';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base'
+
 
 export default class KostListItem extends React.Component {
     render() {
       return (
+        
         <TouchableHighlight
             onPress={() => this.props.navigation.navigate('KostDetail')}
         >
-        <View style = {styles.listContainer}>
+            <Card>
+                <CardItem cardBody>
+                <Image source={this.props.item.img} style={{height: 200, width: null, flex: 1}}/>
+                </CardItem>
+                <Text
+                    style={{
+                        margin : 5,
+                        marginLeft : 10,
+                        fontSize : 20,
+                        fontWeight : 'bold'
+                    }}
+                >{this.props.item.judul}</Text>
+                    
+                <View style={{
+                        margin : 5,
+                        marginLeft : 10,
+                        flexDirection : 'row'
+                        //fontSize : 20,
+                        //fontWeight : 'bold'
+                    }}>
+                    <Text
+                    >{this.props.item.jenis}</Text>
+                    <Text style={{fontWeight : 'bold'}}  
+                    > | </Text>
+                    <Text   
+                    >{this.props.item.kamar}</Text>
+                    <Text style={{fontWeight : 'bold'}}   
+                    > | </Text>
+                    <Text
+                    >{this.props.item.lokasi}</Text>
+                </View>
+                <Text
+                    style={{
+                        margin : 5,
+                        marginLeft : 10,
+                        fontSize : 17,
+                        fontWeight : 'bold',
+                        color : 'green'
+                    }}
+                >{this.props.item.harga}</Text>
+                
+              
+            </Card>
+        {/* <View style = {styles.listContainer}>
             <Image 
                 source={this.props.item.img} 
                 style={styles.img}
@@ -32,7 +77,7 @@ export default class KostListItem extends React.Component {
                     style={styles.textJudul}
                 >{this.props.item.judul}</Text>
 
-        </View>
+        </View> */}
         </TouchableHighlight>
       );
     }

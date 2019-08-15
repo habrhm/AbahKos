@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
 import {View, Dimensions, Image, StyleSheet, TouchableOpacity, Share} from 'react-native'
 import MapView from 'react-native-maps'
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base'
+import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon,  Text } from 'native-base'
 
+import Ionicon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Slideshow from 'react-native-slideshow/Slideshow'
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
-
-
 
 import Fasilitas from '../components/Fasilitas'
 import RekomendasiKostItem from '../components/RekomendasiKostItem'
@@ -61,6 +60,8 @@ const data = [
           imageDisplay : 'none',  
           imageTabColor : 'silver',
           mapsTabColor : 'green',  
+          deskrpsiLineNumber : 2,
+          readMoreText : 'Tampilkan',
           dataSource: [
             {
               
@@ -105,6 +106,21 @@ const data = [
             imageTabColor : 'green',
             mapsTabColor : 'silver',  
         })
+      }
+      handleReadMore = () => {
+        if  (this.state.readMoreText === 'Tampilkan'){
+        this.setState({
+            deskrpsiLineNumber : null ,
+            readMoreText : 'Sembunyikan'
+
+        })
+        }else{
+            this.setState({
+                deskrpsiLineNumber : 2 ,
+                readMoreText : 'Tampilkan'
+
+            })
+        }
       }
 
       handleShare = async () => {
@@ -184,7 +200,7 @@ const data = [
                             onPress={this.handleOnPressMap
                             }
                         >
-                            <Icon name={'md-pin'} color={this.state.mapsTabColor} size = {16} />
+                            <Ionicon name={'md-pin'} color={this.state.mapsTabColor} size = {16} />
                             <Text
                                 style={[{ color : this.state.mapsTabColor
                                 },
@@ -203,7 +219,7 @@ const data = [
                             onPress={this.handleOnPressImage
                             }
                         >
-                            <Icon name={'md-image'} color={this.state.imageTabColor} size = {16} />
+                            <Ionicon name={'md-image'} color={this.state.imageTabColor} size = {16} />
                             <Text
                                 style={[{ color : this.state.imageTabColor
                                 },
@@ -316,7 +332,7 @@ const data = [
                             Deskripsi Kost
                         </Text>
                         
-                        <Text style={{textAlign: "justify"}} numberOfLines={null} >
+                        <Text style={{textAlign: "justify"}} numberOfLines={this.state.deskrpsiLineNumber} >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                         enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -325,6 +341,7 @@ const data = [
                         nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                         sunt in culpa qui officia deserunt mollit anim id est laborum
                         </Text>
+                        <Text style={{color : 'green'}} onPress={this.handleReadMore}>{this.state.readMoreText}</Text>
                         
 
                     </View>
@@ -357,10 +374,10 @@ const data = [
                         </Text>
                     </View>
                     <View style={{flexDirection : 'row', flex : 1 }}>
-                        <Button style={{borderWidth : 1, borderColor : 'red', borderRadius : 10, marginHorizontal : 2}}>
+                        <Button style={styles.bottomBarButton}>
                             <Text style={{ color : 'red'}}>Hubungi</Text>
                         </Button>
-                        <Button style={{borderWidth : 1, borderColor : 'red', borderRadius : 10, marginHorizontal : 2}}
+                        <Button style={styles.bottomBarButton}
                             onPress={()=>this.props.navigation.navigate('BookingKost')}
                         >
                             <Text style={{ color : 'red'}}>Booking</Text>
@@ -401,7 +418,7 @@ const styles = StyleSheet.create({
             marginVertical : 5
         },
         detailContentTitle:{
-            fontWeight : "200",
+            fontWeight : "bold",
             fontSize : 15,
             color : 'black'
         },
@@ -412,5 +429,11 @@ const styles = StyleSheet.create({
         },fasiltas :{
             alignItems:'center',
             marginHorizontal : 15,
+        }, bottomBarButton : {
+            borderWidth : 2, 
+            borderColor : 'red', 
+            borderRadius : 10,
+            height : 40,
+            marginHorizontal : 5,
         }
 })
