@@ -1,11 +1,11 @@
 import React, {Component } from 'react'
 import {View, Text} from 'react-native'
 
-export default class PasangIklan extends Component{
+export default class LoginForm extends Component{
     render(){
         return(
             <View>
-                <Text>Screen Pasang Iklan</Text>
+                <Text>Screen Login Form</Text>
             </View>
         )
     }

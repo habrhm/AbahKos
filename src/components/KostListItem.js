@@ -7,7 +7,7 @@ export default class KostListItem extends React.Component {
     render() {
       return (
         <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('KostListDetail')}
+            onPress={() => this.props.navigation.navigate('KostDetail')}
         >
         <View style = {styles.listContainer}>
             <Image 

@@ -9,6 +9,8 @@ import Slideshow from 'react-native-slideshow/Slideshow'
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import ReadMore from 'react-native-read-more-text';
 
+import BookingBar from '../components/BookingBar'
+
 
 const {height, width} = Dimensions.get('window');
 
@@ -398,14 +400,7 @@ const data = [
                         />   
                     </View>
 
-                    <View
-                        style={{
-                            height : 20,
-                            backgroundColor : "black"
-                        }}
-                    >
-                    
-                    </View>
+                    <BookingBar/>
 
                 </ScrollView>
             </View>

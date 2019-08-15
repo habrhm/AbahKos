@@ -1,119 +1,65 @@
-import React, {Component} from 'react'
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
-import {createAppContainer} from 'react-navigation'
-import Icon from 'react-native-vector-icons/Ionicons'
+import React, {Component} from 'react';
+import {createStackNavigator, createAppContainer}  from 'react-navigation';
+import { Provider } from 'react-native-paper';
 
-import Explore from './src/routes/ExploreRoute'
-import Wishlist from './src/screen/Wishlist'
-import Chat from './src/screen/Chat'
-import Login from './src/screen/Login'
+import MenuRoute from './src/routes/MainMenuRoute'
+import List from './src/screen/List';
+import ListDetail from './src/screen/ListDetail'
+import LoginForm from './src/screen/LoginForm'
+import PasangIklan from './src/screen/PasangIklan'
+import BookingKost from './src/screen/BookingKost'
 
-const AppNavigator = createMaterialBottomTabNavigator(
+import NavigationServices from './NavigationServices'
+
+const AppNavigator = createStackNavigator(
+    {
+    
+    Menu: {
+      screen: MenuRoute,
+      navigationOptions:{
+      header : null
+      }
+    },
+    KostList: {
+        screen: List
+      },
+    KostDetail: {
+        screen: ListDetail
+    },
+    LoginForm: {
+        screen: LoginForm
+    },
+    PasangIklan: {
+        screen: PasangIklan
+    },
+    BookingKost: {
+        screen:   BookingKost
+    },
+    
+    
+
+    
+  },
   {
-    Explore: {
-      screen: Explore,
-      navigationOptions :{
-        tabBarIcon: ({tintColor}) =><Icon name="md-search" size={20} color={tintColor}/>,
-
-        
-      }
-    },
-    Wishlist: {
-      screen: Wishlist,
-      navigationOptions :{
-        tabBarIcon: ({tintColor}) =><Icon name="md-heart-empty" size={20} color={tintColor}/>,
-
-        
-      }
-      
-    },
-    Login: {
-      screen: Login,
-      navigationOptions :{
-        tabBarIcon: ({tintColor}) =><Icon name="md-person" size={20} color={tintColor}/>,
-
-        
-      }
-    }
-  },{
-    shifting: true,
-    initialRouteName: 'Explore',
-    activeColor: 'green',
-    inactiveColor: 'black',
-    barStyle: { backgroundColor: 'white' }
+      initialRouteName : 'Menu'
   }
-)
-
-export default createAppContainer(AppNavigator)
-// /**
-//  * Sample React Native App
-//  * https://github.com/facebook/react-native
-//  *
-//  * @format
-//  * @flow
-//  */
-
-// import React, {Component} from 'react'
-// import { Provider as PaperProvider, BottomNavigation, DefaultTheme } from 'react-native-paper';
-
-// import Explore from './src/screen/Explore'
-// import Wishlist from './src/screen/Wishlist'
-// import Chat from './src/screen/Chat'
-// import Login from './src/screen/Login'
-
-
-
-
-//   class  App extends Component{
-    
-//     state = {
-//         index: 0,
-//         routes: [
-//           { key: 'explore', title: 'Explore', icon: 'search', color: 'white' },
-//           { key: 'wishlist', title: 'Wishlist', icon: 'favorite-border',  color: 'white' },
-//           { key: 'chat', title: 'Chat', icon: 'chat', color: 'white' },
-//           { key: 'login', title: 'Login', icon: 'person', color: 'white' },
-//         ],
-//       }
-    
-      
-    
-//     _handleIndexChange = index => this.setState({ index });
-
-//     _renderScene = BottomNavigation.SceneMap({
-//     explore: Explore,
-//     wishlist: Wishlist,
-//     chat: Chat,
-//     login:Login,
-//   });
   
+  );
 
-//     render(){
+  const Container = createAppContainer(AppNavigator);
 
-//       return(
-        
-        
-//       <PaperProvider theme={theme}>
-//         <BottomNavigation
-//         navigationState={this.state}
-//         onIndexChange={this._handleIndexChange}
-//         renderScene={this._renderScene}
-//         activeColor='green'
-//         inactiveColor='black'
-//          />
-//       </PaperProvider>
+  export default class ExploreRoute extends Component {
+    render() {
+      return(
+       
+            <Container 
+                ref={navigatorRef => {
+                    NavigationServices.setTopLevelNavigator(navigatorRef);
+                }}
+            />
+       
+      ) 
       
-//       )
-//     }
-//   }
-
-//   const theme = {
-//     ...DefaultTheme,
-//     roundness: 2,
-//     colors: {
-//       ...DefaultTheme.colors,
-//       primary: 'white',
-//       accent: '#f1c40f',
-//     }
-//   };
-//   export default App
+      
+    }
+  }

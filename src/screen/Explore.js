@@ -12,7 +12,10 @@ import {Appbar,
 import { SearchBar} from 'react-native-elements';
 import Slideshow from 'react-native-slideshow/Slideshow'
 
+
 import ExploreHeader from '../components/ExploreHeader'
+import NavigationServices from '../../NavigationServices';
+
 const data = [
   {  img : require('../../asset/bandung.jpg'), title: 'Bandung'},
   { img : require('../../asset/jakarta.jpg'), title: 'Jakarta'},
@@ -67,10 +70,6 @@ class Explore extends Component {
       componentWillUnmount() {
         clearInterval(this.state.interval);
       }
-      static navigationOptions = {
-        // headerTitle instead of title
-        headerTitle: <ExploreHeader />,
-      };
 
     render(){
         
@@ -78,15 +77,7 @@ class Explore extends Component {
           <ScrollView  > 
             <View>
               
-                {/* <Appbar.Header>
-                    <Appbar.Action  
-                        icon='home'
-                    />
-                    <Appbar.Content
-                        title="AbahKos"
-                    />
-
-                </Appbar.Header> */}
+               <ExploreHeader/>
                 <View>
                 <SearchBar        
                   placeholder="Type Here..."        
@@ -114,20 +105,18 @@ class Explore extends Component {
 
                               <View style={styles.Row2}>
                                 <View style={styles.View1}>
-                                <Text> Are You Owner? Login Here</Text>
+                                <Text> Punya kost? Pasang iklan di sini</Text>
                                 </View>
                                 <TouchableOpacity
                                  style={[
                                     styles.modalTab]
                                  }
                                
-                                    onPress={() =>
-                                        this.setState( {selectedTab : 1} 
-                                        )
-                                    }
+                                 onPress={ () => {NavigationServices.navigate('PasangIklan', {})}}
+                                    
                             >
                                 <Text>
-                                    Login
+                                    Pasang Iklan
                                 </Text>
                             </TouchableOpacity>
                               </View>
@@ -143,7 +132,7 @@ class Explore extends Component {
                                 data = {this.state.data}
                               renderItem={({item : rowData}) => {
                                 return(
-                                <TouchableOpacity onPress={ () => {this.props.navigation.navigate('KostList')}}>                                  
+                                <TouchableOpacity onPress={ () => {NavigationServices.navigate('KostList', {})}}>                                  
                                 <View style={styles.content}>
                                     <View style={{flex : 2}}>
                                     <Image source={rowData.img} style={styles.img}
