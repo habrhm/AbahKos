@@ -27,7 +27,10 @@ const AppNavigator = createStackNavigator(
         screen: ListDetail
     },
     LoginForm: {
-        screen: LoginForm
+        screen: LoginForm,
+        navigationOptions:{
+            header : null
+            }
     },
     PasangIklan: {
         screen: PasangIklan
