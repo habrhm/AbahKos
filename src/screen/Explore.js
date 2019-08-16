@@ -105,7 +105,7 @@ class Explore extends Component {
 
                               <View style={styles.Row2}>
                                 <View style={styles.View1}>
-                                <Text> Punya kost? Pasang iklan di sini</Text>
+                                <Text style={{color : '#fff'}}> Punya kost? Pasang iklan di sini</Text>
                                 </View>
                                 <TouchableOpacity
                                  style={[
@@ -115,7 +115,7 @@ class Explore extends Component {
                                  onPress={ () => {NavigationServices.navigate('PasangIklan', {})}}
                                     
                             >
-                                <Text>
+                                <Text style={{color : '#fff'}}>
                                     Pasang Iklan
                                 </Text>
                             </TouchableOpacity>
@@ -178,7 +178,9 @@ modalTab:{
   justifyContent: "center",
   alignItems: "center",
   borderWidth: 0.5,
-   borderRadius: 10,
+  borderRadius: 10,
+  borderColor : '#fff',
+  
   
 },
 
@@ -187,12 +189,14 @@ flex: 1,
 alignItems: "flex-start"
 },
 Row2:{
+  margin : 10,
   paddingHorizontal: 20,
   height: 50,
   flex: 1,
   alignItems: "center",
-  backgroundColor: 'green',
-  flexDirection: 'row'
+  backgroundColor: '#43A047',
+  flexDirection: 'row',
+  borderRadius : 10
   },
 Row3:{
     flex: 1,
