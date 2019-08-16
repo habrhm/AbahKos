@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native'
-import {Modal, Portal,  Button} from 'react-native-paper'
+import {View, StyleSheet, TouchableOpacity} from 'react-native'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text } from 'native-base';
 //import { BorderlessButton, TouchableWithoutFeedback, TouchableHighlight } from 'react-native-gesture-handler';
 
 import NavigationServices from '../../NavigationServices';
@@ -9,8 +11,7 @@ class Login extends Component {
     constructor(){
         super();
         this.state = {
-            visible:  false,
-            selectedTab : 0
+
         }
     }
 
@@ -19,20 +20,31 @@ class Login extends Component {
     
     render(){
         return(
-            <View>
-                <View
-                    style ={styles.button}
-                >
-                    <Button 
-                        icon="" 
-                        mode="contained" 
+            <Container>
+            <Header style={{backgroundColor: 'white'}}>
+             
+              <Body style={{padding :10}}>
+                <Title style={{fontWeight:'bold', color:'#43A047'}}>Login</Title>
+              </Body>
+              <Right />
+            </Header>
+            <Content contentContainerStyle={{alignContent:'center', paddingHorizontal :50}} >
+                <MaterialIcon name='person' color='green' size = {300} style={{alignSelf:'center'}} />
+                <View style={{marginVertical : 10, }}>
+            
+                    <Text style={{textAlign:'center', marginBottom : 20}}>
+                        Kamu belum login, login untuk menikmati lebih banyak fitur</Text>
+                    </View>
+                <Button 
                         onPress={() => {NavigationServices.navigate('LoginForm')}}
-                        compact={true}
+                        style={{borderRadius:10}}
                     >
-                        Login
+                        <Text style={{textAlign:'center', flex : 1}}>Login</Text>
                     </Button>
-                </View>
-            </View>
+            </Content>
+            </Container>
+                    
+
         )
     }
 
