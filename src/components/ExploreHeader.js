@@ -6,7 +6,7 @@ import {Appbar} from 'react-native-paper'
 export default class ExploreHeader extends React.Component {
     render() {
       return (
-        <Appbar.Header>
+        <Appbar.Header style={{backgroundColor : '#43A047'}}>
         <Appbar.Action  
             icon='home'
         />

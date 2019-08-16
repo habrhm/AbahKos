@@ -22,7 +22,10 @@ const AppNavigator = createStackNavigator(
       }
     },
     KostList: {
-        screen: List
+        screen: List,
+        navigationOptions:{
+          header : null
+          }
       },
     KostDetail: {
         screen: ListDetail,
