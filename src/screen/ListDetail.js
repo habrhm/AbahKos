@@ -15,40 +15,90 @@ import RekomendasiKostItem from '../components/RekomendasiKostItem'
 
 
 const data = [
-    {  img : require('../../asset/bandung.jpg'),
-     judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-     jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Cileungsi',
-    harga: 'Rp 500.000/bulan',
+    {
+        id : '1',  
+        img : [ 
+            {url :  require('../../asset/kost1-1.jpg')},
+            {url : require('../../asset/kost1-2.jpg')},
+            {url : require('../../asset/kost1-3.jpg')},
+        ],
+        judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
+        jenis: 'Putra',
+        kamar: 'Tinggal 2 Kamar',
+        lokasi: 'Cileungsi',
+        harga: 500000,
+        latitude: -6.90389, 
+        longitude: 107.61861,
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
     },
-    {  img : require('../../asset/jakarta.jpg'),
-    judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
-    jenis: 'Putri',
-    kamar: 'Penuh',
-    lokasi: 'Cileunyi',
-    harga: 'Rp 1.000.000/bulan',
+    {  
+        id : '2',
+        img : [ 
+            { url : require('../../asset/kost2-1.jpg')},
+            { url : require('../../asset/kost2-2.jpg')},
+
+        ],
+        judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
+        jenis: 'Putri',
+        kamar: 'Penuh',
+        lokasi: 'Cileunyi',
+        latitude: -6.90389, 
+        longitude: 107.61861,
+        harga: 'Rp 1.000.000/bulan',
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
-    {  img : require('../../asset/bandung.jpg'),
-    judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-    jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Cileungsi',
-    harga: 'Rp 500.000/bulan',
+    {  
+        id : '3',
+        img : [ 
+            { url : require('../../asset/kost3-1.jpg')},
+            {url : require('../../asset/kost3-2.jpg')},
+            { url : require('../../asset/kost3-3.jpg')},
+            { url : require('../../asset/kost3-4.jpg')},
+        ],
+        judul : 'Kost Abah Eman',
+        jenis: 'Campur',
+        kamar: 'Tinggal 10 Kamar',
+        lokasi: 'Cibiru',
+        harga: 'Rp 500.000/bulan',
+        latitude: -6.90389, 
+        longitude: 107.61861,
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
-    {  img : require('../../asset/bandung.jpg'),
-    judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-    jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Cileungsi',
-    harga: 'Rp 500.000/bulan',
+    {  
+        id : '4',
+        img : [ 
+            { url : require('../../asset/kost4-1.jpg')},
+            { url : require('../../asset/kost4-2.jpg')},
+            { url : require('../../asset/kost4-3.jpg')},
+        ],
+        judul : 'Kost Abah Maman',
+        jenis: 'Putra',
+        kamar: 'Tinggal 2 Kamar',
+        lokasi: 'Cikoneng',
+        harga: 'Rp 1.200.300/bulan',
+        latitude: -6.90389, 
+        longitude: 107.61861,
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
-    {  img : require('../../asset/bandung.jpg'),
-    judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-    jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Cileungsi',
-    harga: 'Rp 500.000/bulan',
+    {  
+        id : '5',
+        img : [ 
+            { url : require('../../asset/kost5-1.jpg')},
+            { url : require('../../asset/kost5-2.jpg')},
+            { url : require('../../asset/kost5-3.jpg')},
+        ],  
+        judul : 'Kost Abah Udin',
+        jenis: 'Putra',
+        kamar: 'Tinggal 2 Kamar',
+        lokasi: 'Ciherang',
+        harga: 'Rp 1.000/bulan',
+        latitude: -6.90389, 
+        longitude: 107.61861,
+        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+   
     },
   ];
 
@@ -133,6 +183,14 @@ const data = [
         }
       }
     render(){
+        const { navigation } = this.props;
+        const item = navigation.getParam('item');
+        const region = {
+            longitude : navigation.getParam('item').longitude,
+            latitude : navigation.getParam('item').latitude,
+            longitudeDelta : this.state.region.longitudeDelta,
+            latitudeDelta : this.state.region.latitudeDelta
+        }
         return(
             <Container>
              <Header style={{
@@ -158,7 +216,7 @@ const data = [
                             height: 200,
                             display : this.state.imageDisplay} }> 
                             <Slideshow 
-                                    dataSource={this.state.dataSource}
+                                    dataSource={item.img}
                                     position={this.state.position}
                                     onPositionChanged={position => this.setState({ position })}
                                     arrowSize = {0}
@@ -177,7 +235,7 @@ const data = [
                             provider="google"
                             mapType="standard"
                             style={[styles.map]}
-                            region={this.state.region}
+                            region={region}
                             onLayout={this.onMapLayout}
                             
                         >
@@ -185,8 +243,8 @@ const data = [
                             <MapView.Marker
                                 title='lokasi'
                                 coordinate={{
-                                    latitude: this.state.region.latitude,
-                                    longitude: this.state.region.longitude
+                                    latitude: region.latitude,
+                                    longitude: region.longitude
                                 }}
                             />
                             )}
@@ -239,10 +297,10 @@ const data = [
                     }, styles.detailContent]}>
                             <Text
                                 style={{color : 'red'}}
-                            >Putri    </Text>
+                            >{item.jenis}    </Text>
                             <Text
                                 style={{color : 'red'}}
-                            >Ada 3 Kamar</    Text>
+                            >{item.kamar}</    Text>
                             
                     </View>
 
@@ -253,7 +311,7 @@ const data = [
                         <Text style={{fontSize : 20,
                             color : 'black'
                         }}>
-                            Kost Abah Jl.Dulu Kalo Jodoh Nikah
+                            {item.judul}
                         </Text>
 
                     </View>
@@ -337,13 +395,7 @@ const data = [
                         </Text>
                         
                         <Text style={{textAlign: "justify"}} numberOfLines={this.state.deskrpsiLineNumber} >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor
-                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in culpa qui officia deserunt mollit anim id est laborum
+                        {item.deskripsi}
                         </Text>
                         <Text style={{color : 'green'}} onPress={this.handleReadMore}>{this.state.readMoreText}</Text>
                         
@@ -363,7 +415,7 @@ const data = [
                             renderItem = {({item}) => {
                                 return(
                                     
-                                    <RekomendasiKostItem item = {item} navigation={this.props.navigation}/>
+                                    <RekomendasiKostItem item = {item} navigation={this.props.navigation} />
                                 )
                             }}
                         />   

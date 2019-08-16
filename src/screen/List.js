@@ -1,62 +1,96 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Image,  FlatList,} from 'react-native'
+import {Container, Content} from 'native-base'
 
 import KostListItem from '../components/KostListItem'
+import GoBackHeader from '../components/GoBackHeader'
+
 
 //const {height, width} = Dimensions.get('window');
 
 const data = [
     {
         id : '1',  
-        img : require('../../asset/bandung.jpg'),
+        img : [ 
+            {url :  require('../../asset/kost1-1.jpg')},
+            {url : require('../../asset/kost1-2.jpg')},
+            {url : require('../../asset/kost1-3.jpg')},
+        ],
         judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
         jenis: 'Putra',
         kamar: 'Tinggal 2 Kamar',
         lokasi: 'Cileungsi',
         harga: 500000,
+        latitude: -6.90389, 
+        longitude: 107.61861,
         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
     },
     {  
         id : '2',
-        img : require('../../asset/jakarta.jpg'),
+        img : [ 
+            { url : require('../../asset/kost2-1.jpg')},
+            { url : require('../../asset/kost2-2.jpg')},
+
+        ],
         judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
         jenis: 'Putri',
         kamar: 'Penuh',
         lokasi: 'Cileunyi',
+        latitude: -6.117664, 
+        longitude: 106.906349,
         harga: 'Rp 1.000.000/bulan',
         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
     {  
         id : '3',
-        img : require('../../asset/surabaya.jpg'),
+        img : [ 
+            { url : require('../../asset/kost3-1.jpg')},
+            {url : require('../../asset/kost3-2.jpg')},
+            { url : require('../../asset/kost3-3.jpg')},
+            { url : require('../../asset/kost3-4.jpg')},
+        ],
         judul : 'Kost Abah Eman',
         jenis: 'Campur',
         kamar: 'Tinggal 10 Kamar',
         lokasi: 'Cibiru',
         harga: 'Rp 500.000/bulan',
+        latitude: -6.90389, 
+        longitude: 107.61861,
         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
     {  
         id : '4',
-        img : require('../../asset/malang.jpg'),
+        img : [ 
+            { url : require('../../asset/kost4-1.jpg')},
+            { url : require('../../asset/kost4-2.jpg')},
+            { url : require('../../asset/kost4-3.jpg')},
+        ],
         judul : 'Kost Abah Maman',
         jenis: 'Putra',
         kamar: 'Tinggal 2 Kamar',
         lokasi: 'Cikoneng',
         harga: 'Rp 1.200.300/bulan',
+        latitude: -6.90389, 
+        longitude: 107.61861,
         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
     {  
         id : '5',
-        img : require('../../asset/yogyakarta.jpg'),
+        img : [ 
+            { url : require('../../asset/kost5-1.jpg')},
+            { url : require('../../asset/kost5-2.jpg')},
+            { url : require('../../asset/kost5-3.jpg')},
+        ],  
         judul : 'Kost Abah Udin',
         jenis: 'Putra',
         kamar: 'Tinggal 2 Kamar',
         lokasi: 'Ciherang',
         harga: 'Rp 1.000/bulan',
+        latitude: -6.90389, 
+        longitude: 107.61861,
         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
     },
@@ -73,7 +107,9 @@ const data = [
      
     render(){
         return(
-            <View style={{padding : 10}}>  
+            <Container >
+                <GoBackHeader navigation={this.props.navigation} />  
+                <Content style={{padding : 10}}>
                 <FlatList    
                 keyExtractor={(item) =>  item.id}
                 data = {this.state.data}
@@ -81,35 +117,12 @@ const data = [
                 {
                 return( 
                     <KostListItem  key={item.id} item={item} navigation={this.props.navigation}/>                                 
-                // <View style = {styles.listContainer}>
-                //     <Image 
-                //         source={rowData.img} 
-                //         style={styles.img}
-                //     />
-                //     <View style={styles.detailContainer}>
-                //         <Text
-                //             style={{color : 'red'}}
-                //         >{rowData.jenis}  </Text>
-                //         <Text
-                //             style={{color : 'red'}}
-                //         >{rowData.kamar}  </Text>
-                //         <Text
-                //             style={{color : 'black'}}
-                //         >{rowData.lokasi}</Text>
-                //     </View>
-                //     <Text
-                //             style={styles.textHarga}
-                //         >{rowData.harga}</Text>
-                //     <Text
-                //             style={styles.textJudul}
-                //         >{rowData.judul}</Text>
-    
-                // </View>
+
                 
                 
                 )}} />
-
-                </View>
+                </Content>
+                </Container>
             
         )
     }

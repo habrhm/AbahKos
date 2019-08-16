@@ -8,7 +8,7 @@ export default class RekomendasiKostItem extends React.Component {
     render() {
       return (
         <TouchableHighlight
-            onPress={() => this.props.navigation.push('KostDetail')}
+            onPress={() => this.props.navigation.push('KostDetail', {item : this.props.item})}
         >
             
             <View style={{
@@ -32,7 +32,7 @@ export default class RekomendasiKostItem extends React.Component {
                         style={{width : 196,
                                 height : 150
                         }}
-                        source={this.props.item.img}/>
+                        source={this.props.item.img[0].url}/>
                     <View style={{
                         position : 'absolute',
                         //top: 0,

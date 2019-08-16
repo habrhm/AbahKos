@@ -9,11 +9,11 @@ export default class KostListItem extends React.Component {
       return (
         
         <TouchableHighlight key = {this.props.item.id}
-            onPress={() => this.props.navigation.navigate('KostDetail')}
+            onPress={() => this.props.navigation.navigate('KostDetail', {item : this.props.item})}
         >
             <Card>
                 <CardItem cardBody>
-                <Image source={this.props.item.img} style={{height: 200, width: null, flex: 1}}/>
+                <Image source={this.props.item.img[0].url} style={{height: 200, width: null, flex: 1}}/>
                 </CardItem>
                 <Text
                     style={{
