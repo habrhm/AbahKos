@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import Explore from '../screen/Explore'
 import Wishlist from '../screen/Wishlist'
 import Chat from '../screen/Chat'
-import Login from '../screen/Login'
+import Profil from '../screen/Profil'
 
 const AppNavigator = createMaterialBottomTabNavigator(
   {
@@ -27,8 +27,8 @@ const AppNavigator = createMaterialBottomTabNavigator(
       }
       
     },
-    Login: {
-      screen: Login,
+    Profil: {
+      screen: Profil,
       navigationOptions :{
         tabBarIcon: ({tintColor}) =><Icon name="md-person" size={20} color={tintColor}/>,
 

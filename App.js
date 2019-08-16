@@ -9,7 +9,7 @@ import LoginForm from './src/screen/LoginForm'
 import RegisterForm from './src/screen/RegisterForm'
 import PasangIklan from './src/screen/PasangIklan'
 import BookingKost from './src/screen/BookingKost'
-
+import Login from './src/screen/Login'
 import NavigationServices from './NavigationServices'
 
 const AppNavigator = createStackNavigator(
@@ -49,6 +49,12 @@ const AppNavigator = createStackNavigator(
 
     RegisterForm: {
       screen: RegisterForm,
+      navigationOptions:{
+          header : null
+          }
+    },
+    Login: {
+      screen: Login,
       navigationOptions:{
           header : null
           }

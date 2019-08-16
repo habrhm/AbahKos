@@ -119,6 +119,18 @@ class Explore extends Component {
                                     Pasang Iklan
                                 </Text>
                             </TouchableOpacity>
+                            <TouchableOpacity
+                                 style={[
+                                    styles.modalTab]
+                                 }
+                               
+                                 onPress={ () => {NavigationServices.navigate('Login', {})}}
+                                    
+                            >
+                                <Text style={{color : '#fff'}}>
+                                    Login
+                                </Text>
+                            </TouchableOpacity>
                               </View>
                               <View>                          
                             <Text style={styles.text}> Kota Populer </Text>
