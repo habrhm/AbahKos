@@ -27,7 +27,7 @@ export default class RegisterForm extends Component {
                 <Content>
                   
                         <H1 style={{padding : 20, alignSelf :'center'}} >Register</H1>
-                        <Form style={{paddingBottom : 10}}>
+                        <Form style={{paddingBottom : 10, paddingRight : 13}}>
                             <Item floatingLabel>
                                 <Label>Username</Label>
                                 <Input />
@@ -48,13 +48,13 @@ export default class RegisterForm extends Component {
                             
                             
                         </Form>
-                        <Button rounded block success style={{margin :10}}>
+                        <Button block success style={{margin :10, borderRadius : 10, backgroundColor : '#43A047'}}>
                                 <Text>Register</Text>
                                 
                         </Button>
                         <View  style={{alignSelf:'center', padding: 20, flexDirection : 'row'}}>
                             <Text>Sudah Punya Akun ? </Text>
-                            <Text style={{color : 'green'}} onPress={() => this.props.navigation.navigate('LoginForm')}>Login</Text>
+                            <Text style={{color : '#43A047'}} onPress={() => this.props.navigation.navigate('LoginForm')}>Login</Text>
 
                         </View>
                     

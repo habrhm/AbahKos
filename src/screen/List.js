@@ -117,9 +117,6 @@ const data = [
                 {
                 return( 
                     <KostListItem  key={item.id} item={item} navigation={this.props.navigation}/>                                 
-
-                
-                
                 )}} />
                 </Content>
                 </Container>

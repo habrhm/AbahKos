@@ -4,6 +4,7 @@ import {View, StyleSheet} from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text,  Form, Item, Input,  H1 } from 'native-base'
 import Mapview, { AnimatedRegion, Marker } from 'react-native-maps';
 
+import GoBackHeader from '../components/GoBackHeader'
 
 export default class PasangIklan extends Component{
         
@@ -22,11 +23,11 @@ export default class PasangIklan extends Component{
         
         return(
             <Container>
+                <GoBackHeader navigation={this.props.navigation}/>
                 <Content> 
-               
-                        <View style={styles.body}>
-                        <Form style={{paddingBottom : 10}}>
-                        <Item floatingLabel>
+                    <View style={styles.body}>
+                        <Form style={{paddingBottom : 10, paddingRight : 20}}>
+                            <Item floatingLabel>
                                 <Label>Nama Kost</Label>
                                 <Input />
                             </Item>
@@ -39,43 +40,40 @@ export default class PasangIklan extends Component{
                             </View>     
                             <View style ={styles.container}>
                             <MapView style={styles.map}
-          initialRegion={this.state.region}
-        >
+                                initialRegion={this.state.region}
+                            >
         <MapView.Marker
             coordinate={this.state.region}
             title={"AbahKos"}
             description={"Nugaduh Kos"}
          />
-      </MapView> 
-      </View>                     
-                                    
-                                
-                            
-                            <Item floatingLabel>
-                                <Label>Pemilik Kost</Label>
-                                <Input />
-                            </Item>
-                            <Item floatingLabel>
-                                <Label>Nomor Handphone Pemilik Kost</Label>
-                                <Input />
-                            </Item>
-                            <Item floatingLabel>
-                                <Label>Pengelola Kost</Label>
-                                <Input />
-                            </Item>
-                            <Item floatingLabel>
-                                <Label>No Handphone Pengelola Kost</Label>
-                                <Input />
-                            </Item>
-                            <Item floatingLabel>
-                                <Label>Nomor Handphone</Label>
-                                <Input />
-                            </Item>
-                            
-                            
-                            
+        </MapView> 
+        </View>
+            <Item floatingLabel>
+                <Label>Pemilik Kost</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel>
+                <Label>Nomor Handphone Pemilik Kost</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel>
+                <Label>Pengelola Kost</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel>
+                <Label>No Handphone Pengelola Kost</Label>
+                <Input />
+            </Item>
+            <Item floatingLabel>
+                <Label>Nomor Handphone</Label>
+                <Input />
+            </Item>
+        
+        
+        
                         </Form>
-                        <Button rounded block success style={{margin :10}}>
+                        <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}>
                                 <Text>Selanjutnya</Text>
                                 
                         </Button>
@@ -99,6 +97,9 @@ const styles = StyleSheet.create({
     },
     map: {
       ...StyleSheet.absoluteFillObject,
+      marginLeft : 10,
+      marginRight : 25
+
     
     },
     body: {

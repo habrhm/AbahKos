@@ -109,7 +109,7 @@ const data = [
           mapDisplay : 'flex',
           imageDisplay : 'none',  
           imageTabColor : 'silver',
-          mapsTabColor : 'green',  
+          mapsTabColor : '#43A047',  
           deskrpsiLineNumber : 2,
           readMoreText : 'Tampilkan',
           dataSource: [
@@ -146,14 +146,14 @@ const data = [
             mapDisplay : 'flex',
             imageDisplay : 'none',
             imageTabColor : 'silver',
-            mapsTabColor : 'green',  
+            mapsTabColor : '#43A047',  
         })
       }
       handleOnPressImage = () => {
         this.setState({
             mapDisplay : 'none',
             imageDisplay : 'flex',
-            imageTabColor : 'green',
+            imageTabColor : '#43A047',
             mapsTabColor : 'silver',  
         })
       }
@@ -198,15 +198,15 @@ const data = [
                 }}>
                 <Left>
                     <Button transparent onPress={() => this.props.navigation.goBack()}>
-                        <Icon name='arrow-back' style={{color : 'green'}}/>
+                        <Icon name='arrow-back' style={{color : '#43A047'}}/>
                     </Button>
                 </Left>
                 <Body>
-                    <Title style={{color : 'green'}}></Title>
+                    <Title style={{color : '#43A047'}}></Title>
                 </Body>
                 <Right>
                 <Button transparent onPress={this.handleShare}>
-                        <Icon name='share' style={{color : 'green'}}/>
+                        <Icon name='share' style={{color : '#43A047'}}/>
                     </Button>
                 </Right>
             </Header>
@@ -289,17 +289,17 @@ const data = [
                         
                         </TouchableOpacity>
                     </View>
-                    
+                    <View style={{paddingHorizontal : 5}}>
                     <View 
                         style={[{
                             flexDirection : 'row',
                     
                     }, styles.detailContent]}>
                             <Text
-                                style={{color : 'red'}}
+                                style={{color : '#43A047'}}
                             >{item.jenis}    </Text>
                             <Text
-                                style={{color : 'red'}}
+                                style={{color : '#43A047'}}
                             >{item.kamar}</    Text>
                             
                     </View>
@@ -361,7 +361,7 @@ const data = [
                             Luas Kamar
                         </Text>
                         <View style={{flexDirection: 'row', alignItems:'center'}}>
-                            <MaterialIcon name={'zoom-out-map'} color='green' size = {30} style={{margin : 5}} />
+                            <MaterialIcon name={'zoom-out-map'} color='#43A047' size = {30} style={{margin : 5}} />
                             <Text>
                                 5x3 m
                             </Text>
@@ -397,7 +397,11 @@ const data = [
                         <Text style={{textAlign: "justify"}} numberOfLines={this.state.deskrpsiLineNumber} >
                         {item.deskripsi}
                         </Text>
-                        <Text style={{color : 'green'}} onPress={this.handleReadMore}>{this.state.readMoreText}</Text>
+                        <TouchableOpacity onPress={this.handleReadMore}>
+                            <Text style={{color : '#43A047'}}>
+                                {this.state.readMoreText}
+                            </Text>
+                        </TouchableOpacity>
                         
 
                     </View>
@@ -420,12 +424,12 @@ const data = [
                             }}
                         />   
                     </View>
-
+                    </View>
             </Content>
             <Footer>
                 <FooterTab style={{backgroundColor:'white', borderTopWidth : 1}}>
                     <View style={{flex : 1, alignItems:"center",padding : 20}}>
-                        <Text style={{alignSelf : 'center', color : 'green'}}>
+                        <Text style={{alignSelf : 'center', color : '#43A047'}}>
                             Rp.100.000,00 
                         </Text>
                     </View>
@@ -474,8 +478,8 @@ const styles = StyleSheet.create({
             marginVertical : 5
         },
         detailContentTitle:{
-            fontWeight : "bold",
-            fontSize : 15,
+            fontWeight : "500",
+            fontSize : 17,
             color : 'black'
         },
         fasilitasContainer:{

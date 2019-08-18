@@ -1,13 +1,12 @@
 import React from 'react'
-import {Text, View, StyleSheet, Image, TouchableHighlight} from 'react-native'
+import {Text, View, StyleSheet, Image, TouchableOpacity} from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import {  } from 'react-native-gesture-handler';
 import { Card } from 'react-native-paper';
 
 export default class RekomendasiKostItem extends React.Component {
     render() {
       return (
-        <TouchableHighlight
+        <TouchableOpacity
             onPress={() => this.props.navigation.push('KostDetail', {item : this.props.item})}
         >
             
@@ -15,22 +14,26 @@ export default class RekomendasiKostItem extends React.Component {
                 width: 200,
                 borderColor:'transparent',
                 borderWidth:2 ,
-                borderRadius : 0,
-                marginHorizontal : 5,
+                borderRadius : 10,
+                marginRight : 10,
+                marginTop : 5,
                 elevation :2,
                 
                     }}>
                 
                 <Text style={{
                     backgroundColor : 'red',
-                    borderTopLeftRadius : 0,
+                    borderTopLeftRadius : 10,
+                    borderTopRightRadius : 10,
                     textAlign : 'center',
                     color : 'white'
 
                 }}>{this.props.item.kamar}</Text>
                     <Image 
                         style={{width : 196,
-                                height : 150
+                                height : 150,
+                                borderBottomLeftRadius : 10,
+                                borderBottomRightRadius : 10
                         }}
                         source={this.props.item.img[0].url}/>
                     <View style={{
@@ -39,7 +42,8 @@ export default class RekomendasiKostItem extends React.Component {
                         left: 0, 
                         right: 0,
                         bottom: 0,
-                        backgroundColor: 'black' 
+                        backgroundColor: 'black',
+                        borderRadius : 10 
 
                     }
                     }>
@@ -55,7 +59,7 @@ export default class RekomendasiKostItem extends React.Component {
 
             </View>
             
-        </TouchableHighlight>
+        </TouchableOpacity>
       );
     }
   }

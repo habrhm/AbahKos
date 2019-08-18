@@ -6,12 +6,15 @@ import {Appbar} from 'react-native-paper'
 export default class ExploreHeader extends React.Component {
     render() {
       return (
-        <Appbar.Header style={{backgroundColor : '#43A047'}}>
+        <Appbar.Header style={{backgroundColor : '#fff'}}>
         <Appbar.Action  
             icon='home'
+            color='#43A047'
+            
         />
         <Appbar.Content
             title="AbahKos"
+            color='#43A047'
         />
 
     </Appbar.Header>

@@ -29,7 +29,7 @@ class Login extends Component {
               <Right />
             </Header>
             <Content contentContainerStyle={{alignContent:'center', paddingHorizontal :50}} >
-                <MaterialIcon name='person' color='green' size = {300} style={{alignSelf:'center'}} />
+                <MaterialIcon name='person' color='#43A047' size = {300} style={{alignSelf:'center'}} />
                 <View style={{marginVertical : 10, }}>
             
                     <Text style={{textAlign:'center', marginBottom : 20}}>
@@ -37,7 +37,7 @@ class Login extends Component {
                     </View>
                 <Button 
                         onPress={() => {NavigationServices.navigate('LoginForm')}}
-                        style={{borderRadius:10}}
+                        style={{borderRadius:10, backgroundColor: '#43A047'}}
                     >
                         <Text style={{textAlign:'center', flex : 1}}>Login</Text>
                     </Button>

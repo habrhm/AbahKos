@@ -6,7 +6,7 @@ export default class Fasilitas extends Component{
     render(){
         return(
         <View style={styles.fasiltas}>
-            <Ionicon name={this.props.icon} color='green' size = {30} style={{margin : 5}} />
+            <Ionicon name={this.props.icon} color='#43A047' size = {30} style={{margin : 5}} />
             <Text>
                 {this.props.name}
             </Text>

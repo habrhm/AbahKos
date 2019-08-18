@@ -16,18 +16,18 @@ export default class App extends Component {
                 }}>
                 <Left>
                     <Button transparent onPress={() => this.props.navigation.goBack()}>
-                        <Icon name='arrow-back' style={{color : 'green'}}/>
+                        <Icon name='arrow-back' style={{color : '#43A047'}}/>
                     </Button>
                 </Left>
                 <Body>
-                    <Title style={{color : 'green'}}>Login</Title>
+                    <Title style={{color : '#43A047'}}>Login</Title>
                 </Body>
                 <Right />
                 </Header>
                 <Content>
                   
                         <H1 style={{padding : 20, alignSelf :'center'}} >Login</H1>
-                        <Form style={{paddingBottom : 10}}>
+                        <Form style={{paddingBottom : 10, paddingRight : 13}}>
                             <Item floatingLabel>
                                 <Label>Username</Label>
                                 <Input />
@@ -40,13 +40,13 @@ export default class App extends Component {
                             
                             
                         </Form>
-                        <Button rounded block success style={{margin :10}}>
+                        <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}>
                                 <Text>Login</Text>
                                 
                         </Button>
                         <View  style={{alignSelf:'center', padding: 20, flexDirection : 'row'}}>
                             <Text>Belum Punya Akun ? </Text>
-                            <Text style={{color : 'green'}} onPress={() => this.props.navigation.navigate('RegisterForm')}>Register</Text>
+                            <Text style={{color : '#43A047'}} onPress={() => this.props.navigation.navigate('RegisterForm')}>Register</Text>
 
                         </View>
                     

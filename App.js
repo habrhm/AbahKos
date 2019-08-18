@@ -40,7 +40,10 @@ const AppNavigator = createStackNavigator(
             }
     },
     PasangIklan: {
-        screen: PasangIklan
+        screen: PasangIklan,
+        navigationOptions:{
+          header : null
+          }
     },
     BookingKost: {
         screen:   BookingKost

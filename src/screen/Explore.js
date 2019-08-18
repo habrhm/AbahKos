@@ -89,12 +89,13 @@ class Explore extends Component {
                 </View>
                 
                   <View style={styles.container}>
-                              <View>
+                              <View style={{marginBottom :10}}>
                               <Text style={styles.text}> Promo </Text>
                               </View>
                               
                               <View style={styles.Row1}>
-                              <Slideshow 
+                              <Slideshow
+                              style={{borderRadius : 10}} 
                               dataSource={this.state.dataSource}
                               position={this.state.position}
                               onPositionChanged={position => this.setState({ position })}
@@ -119,6 +120,12 @@ class Explore extends Component {
                                     Pasang Iklan
                                 </Text>
                             </TouchableOpacity>
+                            
+                              </View>
+                              <View style={styles.Row2}>
+                                <View style={styles.View1}>
+                                <Text style={{color : '#fff'}}> Masuk dan daftar di sini</Text>
+                                </View>
                             <TouchableOpacity
                                  style={[
                                     styles.modalTab]
@@ -132,8 +139,8 @@ class Explore extends Component {
                                 </Text>
                             </TouchableOpacity>
                               </View>
-                              <View>                          
-                            <Text style={styles.text}> Kota Populer </Text>
+                              <View >                          
+                                <Text style={styles.text}> Kota Populer </Text>
                               </View>   
 
                               <View style={styles.Row3} >        
@@ -174,9 +181,9 @@ export default Explore
 
 const styles = StyleSheet.create({
 text: {
-fontSize : 14,
-fontWeight: '500',
-paddingHorizontal: 20
+  fontWeight : "500",
+  fontSize : 17,
+  color : 'black'
 },
 container: {
 padding : 10,
@@ -201,7 +208,7 @@ flex: 1,
 alignItems: "flex-start"
 },
 Row2:{
-  margin : 10,
+  marginVertical : 10,
   paddingHorizontal: 20,
   height: 50,
   flex: 1,
@@ -213,6 +220,7 @@ Row2:{
 Row3:{
     flex: 1,
     alignItems: "flex-end"
+    
     },
 View1:{
   flex: 2,
@@ -234,7 +242,8 @@ marginTop: 20,
 marginHorizontal: 10
 },
 content : {
-  marginHorizontal: 10,
+  marginTop:  10,
+  marginRight: 20,
     height :150,
     width : 100,
     borderColor:'#fff'

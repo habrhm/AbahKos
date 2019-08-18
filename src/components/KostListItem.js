@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, StyleSheet, Image, TouchableHighlight,} from 'react-native'
+import {View, StyleSheet, Image, TouchableNativeFeedback,} from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base'
 
@@ -8,12 +8,12 @@ export default class KostListItem extends React.Component {
     render() {
       return (
         
-        <TouchableHighlight key = {this.props.item.id}
+        <TouchableNativeFeedback key = {this.props.item.id}
             onPress={() => this.props.navigation.navigate('KostDetail', {item : this.props.item})}
         >
-            <Card>
-                <CardItem cardBody>
-                <Image source={this.props.item.img[0].url} style={{height: 200, width: null, flex: 1}}/>
+            <Card style={{borderRadius:10}}>
+                <CardItem cardBody style={{ borderRadius:10 }}>
+                <Image source={this.props.item.img[0].url} style={{height: 200, width: null, flex: 1, borderRadius:10}}/>
                 </CardItem>
                 <Text
                     style={{
@@ -78,7 +78,7 @@ export default class KostListItem extends React.Component {
                 >{this.props.item.judul}</Text>
 
         </View> */}
-        </TouchableHighlight>
+        </TouchableNativeFeedback>
       );
     }
   }
