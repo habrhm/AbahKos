@@ -5,7 +5,7 @@ import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text } from 'native-base';
 //import { BorderlessButton, TouchableWithoutFeedback, TouchableHighlight } from 'react-native-gesture-handler';
 
-import NavigationServices from '../../NavigationServices';
+
 class Login extends Component {
 
     constructor(){
@@ -36,7 +36,7 @@ class Login extends Component {
                         Kamu belum login, login untuk menikmati lebih banyak fitur</Text>
                     </View>
                 <Button 
-                        onPress={() => {NavigationServices.navigate('LoginForm')}}
+                        onPress={() => {this.props.navigation.navigate('LoginForm')}}
                         style={{borderRadius:10, backgroundColor: '#43A047'}}
                     >
                         <Text style={{textAlign:'center', flex : 1}}>Login</Text>

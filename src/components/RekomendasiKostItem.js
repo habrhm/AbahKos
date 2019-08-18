@@ -7,7 +7,7 @@ export default class RekomendasiKostItem extends React.Component {
     render() {
       return (
         <TouchableOpacity
-            onPress={() => this.props.navigation.push('KostDetail', {item : this.props.item})}
+            onPress={() => this.props.navigation.push('ListDetail', {item : this.props.item})}
         >
             
             <View style={{

@@ -9,7 +9,7 @@ export default class KostListItem extends React.Component {
       return (
         
         <TouchableNativeFeedback key = {this.props.item.id}
-            onPress={() => this.props.navigation.navigate('KostDetail', {item : this.props.item})}
+            onPress={() => this.props.navigation.navigate('ListDetail', {item : this.props.item})}
         >
             <Card style={{borderRadius:10}}>
                 <CardItem cardBody style={{ borderRadius:10 }}>

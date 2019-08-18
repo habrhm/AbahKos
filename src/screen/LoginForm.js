@@ -1,13 +1,16 @@
 import React, {Component } from 'react'
 import {View} from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text,  Form, Item, Input,  H1 } from 'native-base'
+import AsyncStorage from '@react-native-community/async-storage'
 
 
 
 
-
-export default class App extends Component {
-
+export default class LoginForm extends Component {
+    handleLogin = async () => {
+        await AsyncStorage.setItem('isLogin', '1')
+        this.props.navigation.navigate('Auth')
+    }
     render(){
         return(
             <Container>
@@ -40,7 +43,9 @@ export default class App extends Component {
                             
                             
                         </Form>
-                        <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}>
+                        <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}
+                            onPress={this.handleLogin}
+                        >
                                 <Text>Login</Text>
                                 
                         </Button>

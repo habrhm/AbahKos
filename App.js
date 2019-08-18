@@ -1,92 +1,161 @@
-import React, {Component} from 'react';
-import {createStackNavigator, createAppContainer}  from 'react-navigation';
-import { Provider } from 'react-native-paper';
+import React from 'react'
+import {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation'
+import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import Icon from 'react-native-vector-icons/Ionicons';
 
-import MenuRoute from './src/routes/MainMenuRoute'
+import Explore from './src/screen/Explore';
+import Wishlist from './src/screen/Wishlist';
+import Profil from './src/screen/Profil';
 import List from './src/screen/List';
-import ListDetail from './src/screen/ListDetail'
-import LoginForm from './src/screen/LoginForm'
-import RegisterForm from './src/screen/RegisterForm'
-import PasangIklan from './src/screen/PasangIklan'
-import BookingKost from './src/screen/BookingKost'
-import Login from './src/screen/Login'
-import NavigationServices from './NavigationServices'
+import ListDetail from './src/screen/ListDetail';
+import LoginForm from './src/screen/LoginForm';
+import RegisterForm from './src/screen/RegisterForm';
+import Login from './src/screen/Login';
+import PasangIklan from './src/screen/PasangIklan';
+import BookingKost from './src/screen/BookingKost';
 
-const AppNavigator = createStackNavigator(
-    {
-    
-    Menu: {
-      screen: MenuRoute,
-      navigationOptions:{
-      header : null
-      }
-    },
-    KostList: {
-        screen: List,
-        navigationOptions:{
-          header : null
-          }
-      },
-    KostDetail: {
-        screen: ListDetail,
-        navigationOptions:{
-          header : null
-          }
-    },
-    LoginForm: {
-        screen: LoginForm,
-        navigationOptions:{
-            header : null
+
+const Nav = createSwitchNavigator({
+  Guest: { 
+    screen : createStackNavigator(
+      {
+        Menu : {
+          screen : createMaterialBottomTabNavigator(
+            {
+              Explore: {
+                screen: Explore,
+                navigationOptions :{
+                  tabBarIcon: ({tintColor}) =><Icon name="md-search" size={20} color={tintColor}/>,
+          
+                  
+                }
+              },
+              Wishlist: {
+                screen: Wishlist,
+                navigationOptions :{
+                  tabBarIcon: ({tintColor}) =><Icon name="md-heart-empty" size={20} color={tintColor}/>,
+          
+                  
+                }
+                
+              },
+              Login: {
+                screen: Login,
+                navigationOptions :{
+                  tabBarIcon: ({tintColor}) =><Icon name="md-person" size={20} color={tintColor}/>,
+          
+                  
+                }
+              }
+            },
+            {
+              shifting: true,
+              initialRouteName: 'Explore',
+              activeColor: 'green',
+              inactiveColor: 'black',
+              barStyle: { backgroundColor: 'white' }
             }
-    },
-    PasangIklan: {
-        screen: PasangIklan,
-        navigationOptions:{
-          header : null
-          }
-    },
-    BookingKost: {
-        screen:   BookingKost
-    
-    },
+          )
+        },
+        List : {
+          screen : List
+        },
+        ListDetail : {
+          screen : ListDetail
+        },
+        LoginForm : {
+          screen : LoginForm
+        },
+        RegisterForm : {
+          screen : RegisterForm
+        },
 
-    RegisterForm: {
-      screen: RegisterForm,
-      navigationOptions:{
+      },{
+        defaultNavigationOptions:{
           header : null
-          }
-    },
-    Login: {
-      screen: Login,
-      navigationOptions:{
-          header : null
-          }
-    },
-    
-    
-
-    
+        }
+      }
+    )
   },
-  {
-      initialRouteName : 'Menu'
-  }
-  
-  );
+  Auth: { 
+    screen : createStackNavigator(
+      {
+        Menu : {
+          screen : createMaterialBottomTabNavigator(
+            {
+              Explore: {
+                screen: Explore,
+                navigationOptions :{
+                  tabBarIcon: ({tintColor}) =><Icon name="md-search" size={20} color={tintColor}/>,
+          
+                  
+                }
+              },
+              Wishlist: {
+                screen: Wishlist,
+                navigationOptions :{
+                  tabBarIcon: ({tintColor}) =><Icon name="md-heart-empty" size={20} color={tintColor}/>,
+          
+                  
+                }
+                
+              },
+              Profil: {
+                screen: Profil,
+                navigationOptions :{
+                  tabBarIcon: ({tintColor}) =><Icon name="md-person" size={20} color={tintColor}/>,
+          
+                  
+                }
+              }
+            },
+            {
+              shifting: true,
+              initialRouteName: 'Explore',
+              activeColor: 'green',
+              inactiveColor: 'black',
+              barStyle: { backgroundColor: 'white' }
+            }
+          )
+        },
+        List : {
+          screen : List
+        },
+        ListDetail : {
+          screen : ListDetail
+        },
+        PasangIklan : {
+          screen : PasangIklan
+        },
+        BookingKost : {
+          screen : BookingKost
+        },
 
-  const Container = createAppContainer(AppNavigator);
+      },{
+        defaultNavigationOptions:{
+          header : null
+        }
+      }
+    )
+  },
 
-  export default class ExploreRoute extends Component {
-    render() {
-      return(
-       
-            <Container 
-                ref={navigatorRef => {
-                    NavigationServices.setTopLevelNavigator(navigatorRef);
-                }}
-            />
-       
-      ) 
-      
-      
+
+
+
+  }, {
+    navigationOptions : {
+      header : null
     }
   }
+
+)
+const Container = createAppContainer(Nav)
+export default class App extends React.Component{
+  render(){
+    return(
+      <Container
+
+      />
+    )
+  }
+}

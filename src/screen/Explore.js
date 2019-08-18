@@ -11,10 +11,9 @@ import {Appbar,
         } from 'react-native-paper'
 import { SearchBar} from 'react-native-elements';
 import Slideshow from 'react-native-slideshow/Slideshow'
-
+import AsyncStorage from '@react-native-community/async-storage';
 
 import ExploreHeader from '../components/ExploreHeader'
-import NavigationServices from '../../NavigationServices';
 
 const data = [
   {  img : require('../../asset/bandung.jpg'), title: 'Bandung'},
@@ -25,12 +24,15 @@ const data = [
 ];
 
 class Explore extends Component {
+  
     constructor(props) {
         super(props);
      
         this.state = {
             text: '',
             selectedTab : 0,
+            navigationLink : 'LoginForm',
+            pasangIklanText : 'Login',
           position: 0,
           interval: null,
           dataSource: [
@@ -57,7 +59,19 @@ class Explore extends Component {
         };
       }
    
-  
+      checkLogin = async () => {
+        const isLoggedin = await AsyncStorage.getItem('isLogin')
+       
+        if(isLoggedin == 1){
+          this.props.navigation.navigate('Auth')
+          this.setState({
+            navigationLink : 'PasangIklan',
+            pasangIklanText : 'Pasang Iklan'
+          })
+        }else{
+          
+        }
+    }
       componentWillMount() {
         this.setState({
           interval: setInterval(() => {
@@ -66,13 +80,16 @@ class Explore extends Component {
             });
           }, 2000)
         });
+        this.checkLogin()
+        
+
       }
       componentWillUnmount() {
         clearInterval(this.state.interval);
       }
-
+ 
     render(){
-        
+ 
         return(
           <ScrollView  > 
             <View>
@@ -103,7 +120,7 @@ class Explore extends Component {
                               
                               />
                               </View>
-
+                             
                               <View style={styles.Row2}>
                                 <View style={styles.View1}>
                                 <Text style={{color : '#fff'}}> Punya kost? Pasang iklan di sini</Text>
@@ -113,16 +130,16 @@ class Explore extends Component {
                                     styles.modalTab]
                                  }
                                
-                                 onPress={ () => {NavigationServices.navigate('PasangIklan', {})}}
+                                 onPress={ () => {this.props.navigation.navigate(this.state.navigationLink, {})}}
                                     
                             >
                                 <Text style={{color : '#fff'}}>
-                                    Pasang Iklan
+                                    {this.state.pasangIklanText}
                                 </Text>
                             </TouchableOpacity>
-                            
                               </View>
-                              <View style={styles.Row2}>
+
+                              {/* <View style={styles.Row2}>
                                 <View style={styles.View1}>
                                 <Text style={{color : '#fff'}}> Masuk dan daftar di sini</Text>
                                 </View>
@@ -131,14 +148,14 @@ class Explore extends Component {
                                     styles.modalTab]
                                  }
                                
-                                 onPress={ () => {NavigationServices.navigate('Login', {})}}
+                                 onPress={ () => {this.props.navigation.navigate('LoginForm', {})}}
                                     
                             >
                                 <Text style={{color : '#fff'}}>
                                     Login
                                 </Text>
                             </TouchableOpacity>
-                              </View>
+                              </View> */}
                               <View >                          
                                 <Text style={styles.text}> Kota Populer </Text>
                               </View>   
@@ -151,7 +168,7 @@ class Explore extends Component {
                                 data = {this.state.data}
                               renderItem={({item : rowData}) => {
                                 return(
-                                <TouchableOpacity onPress={ () => {NavigationServices.navigate('KostList', {})}}>                                  
+                                <TouchableOpacity onPress={ () => {this.props.navigation.navigate('List', {})}}>                                  
                                 <View style={styles.content}>
                                     <View style={{flex : 2}}>
                                     <Image source={rowData.img} style={styles.img}

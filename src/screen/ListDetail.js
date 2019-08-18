@@ -102,7 +102,7 @@ const data = [
     },
   ];
 
- class DetailList extends Component {
+ class ListDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -451,7 +451,7 @@ const data = [
     }
 
 }
-export default  DetailList
+export default  ListDetail
 
 const styles = StyleSheet.create({
     tabBar:{
