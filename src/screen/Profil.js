@@ -96,7 +96,7 @@ class Talks extends Component {
      <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}
                             onPress={this.handleLogout}
                         >
-                                <Text>Logout</Text>
+                                <Text style={{color: 'white'}}>Logout</Text>
                                 
     </Button>
       </View>

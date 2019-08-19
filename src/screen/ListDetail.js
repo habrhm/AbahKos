@@ -7,6 +7,7 @@ import Ionicon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Slideshow from 'react-native-slideshow/Slideshow'
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import Fasilitas from '../components/Fasilitas'
 import RekomendasiKostItem from '../components/RekomendasiKostItem'
@@ -112,6 +113,7 @@ const data = [
           mapsTabColor : '#43A047',  
           deskrpsiLineNumber : 2,
           readMoreText : 'Tampilkan',
+          navigationTarget : 'LoginForm',
           dataSource: [
             {
               
@@ -182,6 +184,21 @@ const data = [
             alert(ex.message)
         }
       }
+    checkLogin = async () => {
+        const isLoggedin = await AsyncStorage.getItem('isLogin')
+       
+        if(isLoggedin == 1){
+          this.setState({
+            navigationTarget : 'BookingKost',
+            
+          })
+        }else{
+          
+        }
+    }
+    componentWillMount(){
+        this.checkLogin()
+    }
     render(){
         const { navigation } = this.props;
         const item = navigation.getParam('item');
@@ -430,7 +447,7 @@ const data = [
                 <FooterTab style={{backgroundColor:'white', borderTopWidth : 1}}>
                     <View style={{flex : 1, alignItems:"center",padding : 20}}>
                         <Text style={{alignSelf : 'center', color : '#43A047'}}>
-                            Rp.100.000,00 
+                        {item.harga}
                         </Text>
                     </View>
                     <View style={{flexDirection : 'row', flex : 1 }}>
@@ -438,7 +455,7 @@ const data = [
                             <Text style={{ color : 'red'}}>Hubungi</Text>
                         </Button>
                         <Button style={styles.bottomBarButton}
-                            onPress={()=>this.props.navigation.navigate('BookingKost')}
+                            onPress={()=>this.props.navigation.navigate(this.state.navigationTarget)}
                         >
                             <Text style={{ color : 'red'}}>Booking</Text>
                         </Button>

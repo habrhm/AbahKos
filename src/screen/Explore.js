@@ -84,9 +84,6 @@ class Explore extends Component {
         
 
       }
-      componentWillUnmount() {
-        clearInterval(this.state.interval);
-      }
  
     render(){
  

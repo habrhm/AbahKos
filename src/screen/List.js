@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, StyleSheet, Image,  FlatList,} from 'react-native'
-import {Container, Content} from 'native-base'
+import {Container, Content, Button, Right} from 'native-base'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
 import KostListItem from '../components/KostListItem'
 import GoBackHeader from '../components/GoBackHeader'
@@ -10,7 +11,7 @@ import GoBackHeader from '../components/GoBackHeader'
 
 const data = [
     {
-        id : '1',  
+        id : 1,  
         img : [ 
             {url :  require('../../asset/kost1-1.jpg')},
             {url : require('../../asset/kost1-2.jpg')},
@@ -26,7 +27,7 @@ const data = [
         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
     },
     {  
-        id : '2',
+        id : 2,
         img : [ 
             { url : require('../../asset/kost2-1.jpg')},
             { url : require('../../asset/kost2-2.jpg')},
@@ -43,7 +44,7 @@ const data = [
    
     },
     {  
-        id : '3',
+        id : 3,
         img : [ 
             { url : require('../../asset/kost3-1.jpg')},
             {url : require('../../asset/kost3-2.jpg')},
@@ -61,7 +62,7 @@ const data = [
    
     },
     {  
-        id : '4',
+        id : 4,
         img : [ 
             { url : require('../../asset/kost4-1.jpg')},
             { url : require('../../asset/kost4-2.jpg')},
@@ -78,7 +79,7 @@ const data = [
    
     },
     {  
-        id : '5',
+        id : 5,
         img : [ 
             { url : require('../../asset/kost5-1.jpg')},
             { url : require('../../asset/kost5-2.jpg')},
@@ -111,14 +112,33 @@ const data = [
                 <GoBackHeader navigation={this.props.navigation} />  
                 <Content style={{padding : 10}}>
                 <FlatList    
-                keyExtractor={(item) =>  item.id}
+                keyExtractor={(item) =>  item.id.toString()}
                 data = {this.state.data}
                 renderItem={({item }) => 
                 {
                 return( 
-                    <KostListItem  key={item.id} item={item} navigation={this.props.navigation}/>                                 
+                    <KostListItem  key={item.id.toString()} item={item} navigation={this.props.navigation}/>                                 
                 )}} />
+               
                 </Content>
+                <View 
+                    style={{
+                        flexDirection:'row', 
+                        position : "absolute",
+                        bottom : 20,
+                        alignSelf : 'center'
+                        
+                    }}
+                >
+                    <Button style={[styles.FABButton, {borderTopRightRadius : 0, borderBottomRightRadius : 0, borderRightWidth : 0.5, borderColor : '#43A047'}]}>
+                        <MaterialIcon name={'filter-list'} color='#43A047' />
+                        <Text style={{color: '#43A047', }}>Filter</Text>
+                    </Button>
+                    <Button style={[styles.FABButton, {borderTopLeftRadius : 0, borderBottomLeftRadius : 0, borderLeftWidth : 0.5, borderColor : '#43A047'}]}>
+                        <MaterialIcon name={'sort'} color='#43A047' />
+                        <Text style={{color: '#43A047', }}>Urutkan</Text>
+                    </Button>
+                </View>
                 </Container>
             
         )
@@ -154,6 +174,13 @@ const styles = StyleSheet.create({
         fontWeight : '100',
         fontSize : 15,
         color : 'black'
+    },
+    FABButton : {
+        backgroundColor: 'white', 
+        width : 80, 
+        paddingHorizontal : 10,
+        alignItems : "center"
     }
+
     
 })
