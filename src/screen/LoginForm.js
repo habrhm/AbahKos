@@ -2,16 +2,38 @@ import React, {Component } from 'react'
 import {View} from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text,  Form, Item, Input,  H1 } from 'native-base'
 import AsyncStorage from '@react-native-community/async-storage'
-
-
+    
 
 
 export default class LoginForm extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            data: {
+                email : "",
+                password : "",
+            }
+        }
+    }
+    
+    handleChange = (text, state) =>{
+        let convertedText = text
+        this.setState({
+            data :{
+                ...this.state.data,
+                [state] : convertedText
+            }
+            
+        })
+    } 
+    
+
     handleLogin = async () => {
         await AsyncStorage.setItem('isLogin', '1')
         this.props.navigation.navigate('Auth')
     }
     render(){
+        
         return(
             <Container>
                 <Header style={{
@@ -32,12 +54,20 @@ export default class LoginForm extends Component {
                         <H1 style={{padding : 20, alignSelf :'center'}} >Login</H1>
                         <Form style={{paddingBottom : 10, paddingRight : 13}}>
                             <Item floatingLabel>
-                                <Label>Username</Label>
-                                <Input />
+                                <Label>Email</Label>
+                                <Input
+                                value={this.state.data.email}
+                                onChangeText={(text) =>this.handleChange(text, 'email')}
+                                   />
                             </Item>
                             <Item floatingLabel>
                                 <Label>Password</Label>
-                                <Input />
+                                <Input 
+                                secureTextEntry = {true}
+                                value={this.state.data.password}
+                                onChangeText={(text) =>this.handleChange(text, 'password')}
+                                  
+                                />
                             </Item>
                             
                             
