@@ -1,6 +1,12 @@
 import React from 'react'
-import {createSwitchNavigator, createAppContainer, createStackNavigator} from 'react-navigation'
-import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+import {
+  createSwitchNavigator,
+  createAppContainer,
+  createStackNavigator
+} from 'react-navigation'
+import {
+  createMaterialBottomTabNavigator
+} from "react-navigation-material-bottom-tabs";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Explore from './src/screen/Explore';
@@ -16,146 +22,196 @@ import BookingKost from './src/screen/BookingKost';
 
 
 const Nav = createSwitchNavigator({
-  Guest: { 
-    screen : createStackNavigator(
-      {
-        Menu : {
-          screen : createMaterialBottomTabNavigator(
-            {
-              Explore: {
-                screen: Explore,
-                navigationOptions :{
-                  tabBarIcon: ({tintColor}) =><Icon name="md-search" size={20} color={tintColor}/>,
-          
-                  
+    Guest: {
+      screen: createStackNavigator({
+        Menu: {
+          screen: createMaterialBottomTabNavigator({
+            Explore: {
+              screen: Explore,
+              navigationOptions: {
+                tabBarIcon: ({
+                  tintColor
+                }) => < Icon name = "md-search"
+                size = {
+                  20
                 }
-              },
-              Wishlist: {
-                screen: Wishlist,
-                navigationOptions :{
-                  tabBarIcon: ({tintColor}) =><Icon name="md-heart-empty" size={20} color={tintColor}/>,
-          
-                  
+                color = {
+                  tintColor
                 }
-                
-              },
-              Login: {
-                screen: Login,
-                navigationOptions :{
-                  tabBarIcon: ({tintColor}) =><Icon name="md-person" size={20} color={tintColor}/>,
-          
-                  
-                }
+                />,
+
+
               }
             },
-            {
-              shifting: true,
-              initialRouteName: 'Explore',
-              activeColor: 'green',
-              inactiveColor: 'black',
-              barStyle: { backgroundColor: 'white' }
+            Wishlist: {
+              screen: Wishlist,
+              navigationOptions: {
+                tabBarIcon: ({
+                  tintColor
+                }) => < Icon name = "md-heart"
+                size = {
+                  20
+                }
+                color = {
+                  tintColor
+                }
+                />,
+
+
+              }
+
+            },
+            Login: {
+              screen: Login,
+              navigationOptions: {
+                tabBarIcon: ({
+                  tintColor
+                }) => < Icon name = "md-person"
+                size = {
+                  20
+                }
+                color = {
+                  tintColor
+                }
+                />,
+
+
+              }
             }
-          )
+          }, {
+
+            shifting: false,
+            initialRouteName: 'Explore',
+            activeColor: '#43A047',
+            inactiveColor: 'black',
+            barStyle: {
+              backgroundColor: 'white'
+            }
+          })
         },
-        List : {
-          screen : List
+        List: {
+          screen: List
         },
-        ListDetail : {
-          screen : ListDetail
+        ListDetail: {
+          screen: ListDetail
         },
-        LoginForm : {
-          screen : LoginForm
+        LoginForm: {
+          screen: LoginForm
         },
-        RegisterForm : {
-          screen : RegisterForm
+        RegisterForm: {
+          screen: RegisterForm
         },
 
-      },{
-        defaultNavigationOptions:{
-          header : null
+      }, {
+        defaultNavigationOptions: {
+          header: null
         }
-      }
-    )
-  },
-  Auth: { 
-    screen : createStackNavigator(
-      {
-        Menu : {
-          screen : createMaterialBottomTabNavigator(
-            {
-              Explore: {
-                screen: Explore,
-                navigationOptions :{
-                  tabBarIcon: ({tintColor}) =><Icon name="md-search" size={20} color={tintColor}/>,
-          
-                  
+      })
+    },
+    Auth: {
+      screen: createStackNavigator({
+        Menu: {
+          screen: createMaterialBottomTabNavigator({
+            Explore: {
+              screen: Explore,
+              navigationOptions: {
+                tabBarIcon: ({
+                  tintColor
+                }) => < Icon name = "md-search"
+                size = {
+                  20
                 }
-              },
-              Wishlist: {
-                screen: Wishlist,
-                navigationOptions :{
-                  tabBarIcon: ({tintColor}) =><Icon name="md-heart-empty" size={20} color={tintColor}/>,
-          
-                  
+                color = {
+                  tintColor
                 }
-                
-              },
-              Profil: {
-                screen: Profil,
-                navigationOptions :{
-                  tabBarIcon: ({tintColor}) =><Icon name="md-person" size={20} color={tintColor}/>,
-          
-                  
-                }
+                />,
+
+
               }
             },
-            {
-              shifting: true,
-              initialRouteName: 'Explore',
-              activeColor: 'green',
-              inactiveColor: 'black',
-              barStyle: { backgroundColor: 'white' }
+            Wishlist: {
+              screen: Wishlist,
+              navigationOptions: {
+                tabBarIcon: ({
+                  tintColor
+                }) => < Icon name = "md-heart"
+                size = {
+                  20
+                }
+                color = {
+                  tintColor
+                }
+                />,
+
+
+              }
+
+            },
+            Profil: {
+              screen: Profil,
+              navigationOptions: {
+                tabBarIcon: ({
+                  tintColor
+                }) => < Icon name = "md-person"
+                size = {
+                  20
+                }
+                color = {
+                  tintColor
+                }
+                />,
+
+
+              }
             }
-          )
+          }, {
+            shifting: false,
+            initialRouteName: 'Explore',
+            activeColor: '#43A047',
+            inactiveColor: 'black',
+            barStyle: {
+              backgroundColor: 'white'
+            }
+          })
         },
-        List : {
-          screen : List
+        List: {
+          screen: List
         },
-        ListDetail : {
-          screen : ListDetail
+        ListDetail: {
+          screen: ListDetail
         },
-        PasangIklan : {
-          screen : PasangIklan
+        PasangIklan: {
+          screen: PasangIklan
         },
-        BookingKost : {
-          screen : BookingKost
+        BookingKost: {
+          screen: BookingKost
         },
 
-      },{
-        defaultNavigationOptions:{
-          header : null
+      }, {
+        defaultNavigationOptions: {
+          header: null
         }
-      }
-    )
-  },
+      })
+    },
 
 
 
 
   }, {
-    navigationOptions : {
-      header : null
+    navigationOptions: {
+      header: null
     }
   }
 
 )
 const Container = createAppContainer(Nav)
-export default class App extends React.Component{
-  render(){
-    return(
-      <Container
+export default class App extends React.Component {
+  render() {
+    return ( <
+      Container
 
-      />
+      /
+      >
     )
   }
 }

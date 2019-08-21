@@ -1,111 +1,34 @@
 import React, {Component} from 'react'
-import {View, Text, StyleSheet, Image,  FlatList,} from 'react-native'
+import {View, Text, StyleSheet, Image,  FlatList, TouchableOpacity}  from 'react-native'
 import {Container, Content, Button, Right} from 'native-base'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+import Modal from 'react-native-modal';
 
 import KostListItem from '../components/KostListItem'
 import GoBackHeader from '../components/GoBackHeader'
+import {data} from '../../data'
 
 
-//const {height, width} = Dimensions.get('window');
 
-const data = [
-    {
-        id : 1,  
-        img : [ 
-            {url :  require('../../asset/kost1-1.jpg')},
-            {url : require('../../asset/kost1-2.jpg')},
-            {url : require('../../asset/kost1-3.jpg')},
-        ],
-        judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-        jenis: 'Putra',
-        kamar: 'Tinggal 2 Kamar',
-        lokasi: 'Cileungsi',
-        harga: 500000,
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-    },
-    {  
-        id : 2,
-        img : [ 
-            { url : require('../../asset/kost2-1.jpg')},
-            { url : require('../../asset/kost2-2.jpg')},
-
-        ],
-        judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
-        jenis: 'Putri',
-        kamar: 'Penuh',
-        lokasi: 'Cileunyi',
-        latitude: -6.117664, 
-        longitude: 106.906349,
-        harga: 'Rp 1.000.000/bulan',
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-    },
-    {  
-        id : 3,
-        img : [ 
-            { url : require('../../asset/kost3-1.jpg')},
-            {url : require('../../asset/kost3-2.jpg')},
-            { url : require('../../asset/kost3-3.jpg')},
-            { url : require('../../asset/kost3-4.jpg')},
-        ],
-        judul : 'Kost Abah Eman',
-        jenis: 'Campur',
-        kamar: 'Tinggal 10 Kamar',
-        lokasi: 'Cibiru',
-        harga: 'Rp 500.000/bulan',
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-    },
-    {  
-        id : 4,
-        img : [ 
-            { url : require('../../asset/kost4-1.jpg')},
-            { url : require('../../asset/kost4-2.jpg')},
-            { url : require('../../asset/kost4-3.jpg')},
-        ],
-        judul : 'Kost Abah Maman',
-        jenis: 'Putra',
-        kamar: 'Tinggal 2 Kamar',
-        lokasi: 'Cikoneng',
-        harga: 'Rp 1.200.300/bulan',
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-    },
-    {  
-        id : 5,
-        img : [ 
-            { url : require('../../asset/kost5-1.jpg')},
-            { url : require('../../asset/kost5-2.jpg')},
-            { url : require('../../asset/kost5-3.jpg')},
-        ],  
-        judul : 'Kost Abah Udin',
-        jenis: 'Putra',
-        kamar: 'Tinggal 2 Kamar',
-        lokasi: 'Ciherang',
-        harga: 'Rp 1.000/bulan',
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-    },
-  ];
 
  class List extends Component {
     constructor(props) {
         super(props);
-     
+        
         this.state = {
-          data:data
+          data:data,
+          visibleModal : null,
+          sortOption : 'acak'
         };
       }
-     
+     handelSortOptionPress = (opt) =>{
+         this.setState(
+             {
+                 sortOption : opt
+             }
+         )
+     }
+
     render(){
         return(
             <Container >
@@ -130,15 +53,52 @@ const data = [
                         
                     }}
                 >
-                    <Button style={[styles.FABButton, {borderTopRightRadius : 0, borderBottomRightRadius : 0, borderRightWidth : 0.5, borderColor : '#43A047'}]}>
+                    <Button style={[styles.FABButton, {borderTopRightRadius : 0, borderBottomRightRadius : 0, borderRightWidth : 0.5, borderColor : '#43A047'}]}
+                        
+                    >
                         <MaterialIcon name={'filter-list'} color='#43A047' />
                         <Text style={{color: '#43A047', }}>Filter</Text>
                     </Button>
-                    <Button style={[styles.FABButton, {borderTopLeftRadius : 0, borderBottomLeftRadius : 0, borderLeftWidth : 0.5, borderColor : '#43A047'}]}>
+                    <Button style={[styles.FABButton, {borderTopLeftRadius : 0, borderBottomLeftRadius : 0, borderLeftWidth : 0.5, borderColor : '#43A047'}]}
+                        onPress={() => {this.setState({visibleModal : 'sort'})}}
+                    >
                         <MaterialIcon name={'sort'} color='#43A047' />
                         <Text style={{color: '#43A047', }}>Urutkan</Text>
                     </Button>
                 </View>
+                <Modal
+                    isVisible={this.state.visibleModal === 'sort'}
+                    onSwipeComplete={() => this.setState({ visibleModal: null })}
+                    swipeDirection={['up', 'left', 'right', 'down']}
+                    style={styles.sortModal}
+                    onBackdropPress={() => this.setState({ visibleModal: null })}
+                >
+                    <View style={styles.sortModalContent}>
+                        <View style={{borderBottomWidth : 1, borderBottomColor : '#43A047', paddingLeft : 10, paddingBottom : 10}}>
+                            <Text style={styles.contentTitle}>Urutkan Dari</Text>
+                        </View>
+                        <TouchableOpacity style={styles.sortOption} onPress={() => this.handelSortOptionPress('acak')}>
+                            <Text style={{color : this.state.sortOption === 'acak' ? '#43A047' : 'silver'}}>Acak</Text>   
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.sortOption} onPress={() => this.handelSortOptionPress('termurah')}>
+                            <Text style={{color : this.state.sortOption === 'termurah' ? '#43A047' : 'silver'}}>Harga termurah</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.sortOption} onPress={() => this.handelSortOptionPress('termahal')}>
+                            <Text style={{color : this.state.sortOption === 'termahal' ? '#43A047' : 'silver'}}>Harga termahal</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.sortOption} onPress={() => this.handelSortOptionPress('kosong')}>
+                            <Text style={{color : this.state.sortOption === 'kosong' ? '#43A047' : 'silver'}}>Kosong ke penuh</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.sortOption} onPress={() => this.handelSortOptionPress('penuh')}>
+                            <Text style={{color : this.state.sortOption === 'penuh' ? '#43A047' : 'silver'}}>Penuh ke kosong</Text> 
+                        </TouchableOpacity>
+                          
+                            
+                            
+                            
+                        
+                    </View>
+                </Modal>
                 </Container>
             
         )
@@ -180,7 +140,26 @@ const styles = StyleSheet.create({
         width : 80, 
         paddingHorizontal : 10,
         alignItems : "center"
+    },
+    sortModal : {     
+            justifyContent: 'flex-end',
+            margin: 0,
+    },
+    sortModalContent: {
+        backgroundColor: 'white',
+        paddingVertical: 10,
+        justifyContent: 'center',
+       // alignItems: 'center',
+        borderRadius: 4,
+        borderColor: 'rgba(0, 0, 0, 0.1)',
+      },
+    contentTitle : {
+        color : '#43A047',
+        fontSize : 20
+    },
+    sortOption : {
+        paddingTop : 5,
+        paddingLeft : 10
     }
-
     
 })

@@ -190,20 +190,17 @@ export default class PasangIklan extends Component{
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
         }
-    handleCheck(checked, index){
+    async handleCheck(checked, index){
         fasilitas = this.state.fasilitas
         fasilitas[index].checked = !checked
 
-        this.setState({
-            
-         
-    })
+ 
         const selectedFasilitas = fasilitas.filter((data) =>(
             data.checked === true
         ))
         const selectedFasilitasName = selectedFasilitas.map((data) => (data.name))
         
-        this.setState({
+        await this.setState({
             fasilitas : fasilitas,
             data : {
                 ...this.state.data,
@@ -378,7 +375,7 @@ export default class PasangIklan extends Component{
                                     <Label>Jumlah Kamar</Label>
                                     <Input  
                                             keyboardType='number-pad'
-                                            value={this.state.data.roomNumber}
+                                            value={this.state.data.roomNumber.toString()}
                                             onChangeText={(text) =>this.handleChange(text, 'roomNumber', 'number')}
                                     />
                                 </Item>
@@ -408,7 +405,7 @@ export default class PasangIklan extends Component{
                                     <Label>Harga</Label>
                                     <Input 
                                         keyboardType="number-pad"
-                                        value={this.state.data.price}
+                                        value={this.state.data.price.toString()}
                                         onChangeText={(text) =>this.handleChange(text, 'price', 'number')}
                                 
                                     />
@@ -420,7 +417,7 @@ export default class PasangIklan extends Component{
                                             <Label>Panjang (m)</Label>
                                             <Input
                                                 keyboardType="number-pad"
-                                                value={this.state.data.roomSize.length}
+                                                value={this.state.data.roomSize.length.toString()}
                                                 onChangeText={(text) =>this.handleSizeChange(text, 'length')}
                                             />
 
@@ -429,7 +426,7 @@ export default class PasangIklan extends Component{
                                             <Label>Lebar (m)</Label>
                                             <Input
                                                 keyboardType="number-pad"
-                                                value={this.state.data.roomSize.width}
+                                                value={this.state.data.roomSize.width.toString()}
                                                 onChangeText={(text) =>this.handleSizeChange(text, 'width')}
                                             />
                                         </Item> 

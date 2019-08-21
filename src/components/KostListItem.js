@@ -2,9 +2,10 @@ import React from 'react'
 import {View, StyleSheet, Image, TouchableNativeFeedback,} from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base'
-
+import {formatRupiah} from '../../data'
 
 export default class KostListItem extends React.Component {
+    
     render() {
       return (
         
@@ -13,7 +14,7 @@ export default class KostListItem extends React.Component {
         >
             <Card style={{borderRadius:10}}>
                 <CardItem cardBody style={{ borderRadius:10 }}>
-                <Image source={this.props.item.img[0].url} style={{height: 200, width: null, flex: 1, borderRadius:10}}/>
+                <Image source={this.props.item.images[0]} style={{height: 200, width: null, flex: 1, borderRadius:10}}/>
                 </CardItem>
                 <Text
                     style={{
@@ -22,7 +23,7 @@ export default class KostListItem extends React.Component {
                         fontSize : 20,
                         fontWeight : 'bold'
                     }}
-                >{this.props.item.judul}</Text>
+                >{this.props.item.name} {this.props.item.address}</Text>
                     
                 <View style={{
                         margin : 5,
@@ -32,15 +33,15 @@ export default class KostListItem extends React.Component {
                         //fontWeight : 'bold'
                     }}>
                     <Text
-                    >{this.props.item.jenis}</Text>
+                    >{this.props.item.roomType}</Text>
                     <Text style={{fontWeight : 'bold'}}  
                     > | </Text>
                     <Text   
-                    >{this.props.item.kamar}</Text>
+                    >Tersedia {this.props.item.roomNumber} Kamar</Text>
                     <Text style={{fontWeight : 'bold'}}   
                     > | </Text>
                     <Text
-                    >{this.props.item.lokasi}</Text>
+                    >{this.props.item.city}</Text>
                 </View>
                 <Text
                     style={{
@@ -50,7 +51,7 @@ export default class KostListItem extends React.Component {
                         fontWeight : 'bold',
                         color : 'green'
                     }}
-                >{this.props.item.harga}</Text>
+                >{formatRupiah(this.props.item.price, 'Rp. ' )} /Bulan</Text>
                 
               
             </Card>

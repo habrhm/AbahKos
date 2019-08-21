@@ -61,7 +61,6 @@ class Explore extends Component {
    
       checkLogin = async () => {
         const isLoggedin = await AsyncStorage.getItem('isLogin')
-       
         if(isLoggedin == 1){
           this.props.navigation.navigate('Auth')
           this.setState({
@@ -72,7 +71,7 @@ class Explore extends Component {
           
         }
     }
-      componentWillMount() {
+       componentWillMount() {
         this.setState({
           interval: setInterval(() => {
             this.setState({
@@ -80,7 +79,7 @@ class Explore extends Component {
             });
           }, 2000)
         });
-        this.checkLogin()
+       this.checkLogin()
         
 
       }

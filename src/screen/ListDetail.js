@@ -12,105 +12,105 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Fasilitas from '../components/Fasilitas'
 import RekomendasiKostItem from '../components/RekomendasiKostItem'
 
+import {data, formatRupiah} from '../../data'
 
 
+// const data = [
+//     {
+//         id : '1',  
+//         img : [ 
+//             {url :  require('../../asset/kost1-1.jpg')},
+//             {url : require('../../asset/kost1-2.jpg')},
+//             {url : require('../../asset/kost1-3.jpg')},
+//         ],
+//         judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
+//         jenis: 'Putra',
+//         kamar: 'Tinggal 2 Kamar',
+//         lokasi: 'Cileungsi',
+//         harga: 500000,
+//         latitude: -6.90389, 
+//         longitude: 107.61861,
+//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+//     },
+//     {  
+//         id : '2',
+//         img : [ 
+//             { url : require('../../asset/kost2-1.jpg')},
+//             { url : require('../../asset/kost2-2.jpg')},
 
-const data = [
-    {
-        id : '1',  
-        img : [ 
-            {url :  require('../../asset/kost1-1.jpg')},
-            {url : require('../../asset/kost1-2.jpg')},
-            {url : require('../../asset/kost1-3.jpg')},
-        ],
-        judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-        jenis: 'Putra',
-        kamar: 'Tinggal 2 Kamar',
-        lokasi: 'Cileungsi',
-        harga: 500000,
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-    },
-    {  
-        id : '2',
-        img : [ 
-            { url : require('../../asset/kost2-1.jpg')},
-            { url : require('../../asset/kost2-2.jpg')},
-
-        ],
-        judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
-        jenis: 'Putri',
-        kamar: 'Penuh',
-        lokasi: 'Cileunyi',
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        harga: 'Rp 1.000.000/bulan',
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+//         ],
+//         judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
+//         jenis: 'Putri',
+//         kamar: 'Penuh',
+//         lokasi: 'Cileunyi',
+//         latitude: -6.90389, 
+//         longitude: 107.61861,
+//         harga: 'Rp 1.000.000/bulan',
+//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
-    },
-    {  
-        id : '3',
-        img : [ 
-            { url : require('../../asset/kost3-1.jpg')},
-            {url : require('../../asset/kost3-2.jpg')},
-            { url : require('../../asset/kost3-3.jpg')},
-            { url : require('../../asset/kost3-4.jpg')},
-        ],
-        judul : 'Kost Abah Eman',
-        jenis: 'Campur',
-        kamar: 'Tinggal 10 Kamar',
-        lokasi: 'Cibiru',
-        harga: 'Rp 500.000/bulan',
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+//     },
+//     {  
+//         id : '3',
+//         img : [ 
+//             { url : require('../../asset/kost3-1.jpg')},
+//             {url : require('../../asset/kost3-2.jpg')},
+//             { url : require('../../asset/kost3-3.jpg')},
+//             { url : require('../../asset/kost3-4.jpg')},
+//         ],
+//         judul : 'Kost Abah Eman',
+//         jenis: 'Campur',
+//         kamar: 'Tinggal 10 Kamar',
+//         lokasi: 'Cibiru',
+//         harga: 'Rp 500.000/bulan',
+//         latitude: -6.90389, 
+//         longitude: 107.61861,
+//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
-    },
-    {  
-        id : '4',
-        img : [ 
-            { url : require('../../asset/kost4-1.jpg')},
-            { url : require('../../asset/kost4-2.jpg')},
-            { url : require('../../asset/kost4-3.jpg')},
-        ],
-        judul : 'Kost Abah Maman',
-        jenis: 'Putra',
-        kamar: 'Tinggal 2 Kamar',
-        lokasi: 'Cikoneng',
-        harga: 'Rp 1.200.300/bulan',
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+//     },
+//     {  
+//         id : '4',
+//         img : [ 
+//             { url : require('../../asset/kost4-1.jpg')},
+//             { url : require('../../asset/kost4-2.jpg')},
+//             { url : require('../../asset/kost4-3.jpg')},
+//         ],
+//         judul : 'Kost Abah Maman',
+//         jenis: 'Putra',
+//         kamar: 'Tinggal 2 Kamar',
+//         lokasi: 'Cikoneng',
+//         harga: 'Rp 1.200.300/bulan',
+//         latitude: -6.90389, 
+//         longitude: 107.61861,
+//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
-    },
-    {  
-        id : '5',
-        img : [ 
-            { url : require('../../asset/kost5-1.jpg')},
-            { url : require('../../asset/kost5-2.jpg')},
-            { url : require('../../asset/kost5-3.jpg')},
-        ],  
-        judul : 'Kost Abah Udin',
-        jenis: 'Putra',
-        kamar: 'Tinggal 2 Kamar',
-        lokasi: 'Ciherang',
-        harga: 'Rp 1.000/bulan',
-        latitude: -6.90389, 
-        longitude: 107.61861,
-        deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
+//     },
+//     {  
+//         id : '5',
+//         img : [ 
+//             { url : require('../../asset/kost5-1.jpg')},
+//             { url : require('../../asset/kost5-2.jpg')},
+//             { url : require('../../asset/kost5-3.jpg')},
+//         ],  
+//         judul : 'Kost Abah Udin',
+//         jenis: 'Putra',
+//         kamar: 'Tinggal 2 Kamar',
+//         lokasi: 'Ciherang',
+//         harga: 'Rp 1.000/bulan',
+//         latitude: -6.90389, 
+//         longitude: 107.61861,
+//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
    
-    },
-  ];
+//     },
+//   ];
 
  class ListDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          mapDisplay : 'flex',
-          imageDisplay : 'none',  
-          imageTabColor : 'silver',
-          mapsTabColor : '#43A047',  
+          mapDisplay : 'none',
+          imageDisplay : 'flex',  
+          imageTabColor : '#43A047',
+          mapsTabColor : 'silver',  
           deskrpsiLineNumber : 2,
           readMoreText : 'Tampilkan',
           navigationTarget : 'LoginForm',
@@ -138,6 +138,7 @@ const data = [
         
         }
     }
+    
 
     onMapLayout = () => {
         this.setState({ isMapReady: true });
@@ -202,9 +203,12 @@ const data = [
     render(){
         const { navigation } = this.props;
         const item = navigation.getParam('item');
+        // const img = item.images.map((item)=>(
+            
+        // ))
         const region = {
-            longitude : navigation.getParam('item').longitude,
-            latitude : navigation.getParam('item').latitude,
+            longitude : navigation.getParam('item').region.longitude,
+            latitude : navigation.getParam('item').region.latitude,
             longitudeDelta : this.state.region.longitudeDelta,
             latitudeDelta : this.state.region.latitudeDelta
         }
@@ -232,13 +236,21 @@ const data = [
                         style={{
                             height: 200,
                             display : this.state.imageDisplay} }> 
-                            <Slideshow 
+                            <FlatList 
+                                data={item.images}
+                                pagingEnabled={true}
+                                horizontal={true}
+                                renderItem={({item}) =>(
+                                    <Image style={{height: 200, width : Dimensions.get('window').width}} source={item} />
+                                )}
+                            />
+                            {/* <Slideshow 
                                     dataSource={item.img}
                                     position={this.state.position}
                                     onPositionChanged={position => this.setState({ position })}
                                     arrowSize = {0}
                                     
-                                    />
+                                    /> */}
                     </View>
                     <View 
                         style={{
@@ -268,24 +280,7 @@ const data = [
                         </MapView>
                     </View>
                     <View style={styles.tabBar}>
-                        <TouchableOpacity
-                            style={[
-                                styles.modalTab ,
-                            ]}
-                            onPress={this.handleOnPressMap
-                            }
-                        >
-                            <Ionicon name={'md-pin'} color={this.state.mapsTabColor} size = {16} />
-                            <Text
-                                style={[{ color : this.state.mapsTabColor
-                                },
-                                styles.tabText]}
-                            >
-                                Lokasi
-
-                            </Text>
                         
-                        </TouchableOpacity>
                         <TouchableOpacity
                             style={[
                                 styles.modalTab ,
@@ -305,6 +300,24 @@ const data = [
                             </Text>
                         
                         </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[
+                                styles.modalTab ,
+                            ]}
+                            onPress={this.handleOnPressMap
+                            }
+                        >
+                            <Ionicon name={'md-pin'} color={this.state.mapsTabColor} size = {16} />
+                            <Text
+                                style={[{ color : this.state.mapsTabColor
+                                },
+                                styles.tabText]}
+                            >
+                                Lokasi
+
+                            </Text>
+                        
+                        </TouchableOpacity>
                     </View>
                     <View style={{paddingHorizontal : 5}}>
                     <View 
@@ -314,10 +327,10 @@ const data = [
                     }, styles.detailContent]}>
                             <Text
                                 style={{color : '#43A047'}}
-                            >{item.jenis}    </Text>
+                            >{item.roomType}    </Text>
                             <Text
                                 style={{color : '#43A047'}}
-                            >{item.kamar}</    Text>
+                            >Tersedia {item.roomNumber} Kamar</    Text>
                             
                     </View>
 
@@ -328,7 +341,7 @@ const data = [
                         <Text style={{fontSize : 20,
                             color : 'black'
                         }}>
-                            {item.judul}
+                            {item.name} {item.address} 
                         </Text>
 
                     </View>
@@ -338,36 +351,11 @@ const data = [
                         <Text style={{
                             color : 'black'
                         }}>
-                            Update 12 Agustus • 19:35
+                            {item.city}
                         </Text>
 
                     </View>
                         
-                    <View
-                        style={[{
-                            borderTopWidth : 1,
-                            borderTopColor : '#b5aeae',
-                            borderBottomWidth : 1,
-                            borderBottomColor : '#b5aeae',
-                            flexDirection : "row",
-                            justifyContent : 'space-around'
-                        }, styles.detailContent]}
-                    >   
-                        <View  style={{
-                            marginVertical :10,
-                            }}>
-                            <Text>
-                                Tidak termasuk listrik
-                            </Text>
-                        </View>
-                        <View style={{
-                            marginVertical :10,
-                            }}>
-                            <Text>
-                                tidak ada min. bayar
-                            </Text>
-                        </View>
-                    </View>
                     {/* Luas Kamar */}
                     <View
                         style={
@@ -380,7 +368,7 @@ const data = [
                         <View style={{flexDirection: 'row', alignItems:'center'}}>
                             <MaterialIcon name={'zoom-out-map'} color='#43A047' size = {30} style={{margin : 5}} />
                             <Text>
-                                5x3 m
+                                {item.roomSize.width} x {item.roomSize.length}  meter
                             </Text>
 
                         </View>
@@ -395,13 +383,15 @@ const data = [
                             Fasilitas kost dan kamar
                         </Text>
                         <View style={styles.fasilitasContainer}>
-                            <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                <Fasilitas icon='md-bed' name='Kasur'/>
-                                <Fasilitas icon='md-bed' name='Kamar mandi dalam'/>
-                                <Fasilitas icon='md-thermometer' name='AC'/>
-                                <Fasilitas icon='md-wifi' name='Wifi - Internet'/>
-                            
-                            </ScrollView>
+                                 <FlatList
+                                    horizontal={true} 
+                                    data={item.facilities}
+                                    renderItem={({item}) =>(
+                                        <Fasilitas name={item}/>
+                                    )}    
+                                />
+                        
+                           
                         </View>
                     </View>
                     
@@ -412,7 +402,7 @@ const data = [
                         </Text>
                         
                         <Text style={{textAlign: "justify"}} numberOfLines={this.state.deskrpsiLineNumber} >
-                        {item.deskripsi}
+                        {item.description}
                         </Text>
                         <TouchableOpacity onPress={this.handleReadMore}>
                             <Text style={{color : '#43A047'}}>
@@ -428,7 +418,7 @@ const data = [
                         <Text style={styles.detailContentTitle}>
                             Kost Menarik Lainnya
                         </Text>
-                        <FlatList 
+                         <FlatList 
                             horizontal={true} 
                             showsHorizontalScrollIndicator={false}
                             keyExtractor={(item) =>  item.title }
@@ -439,15 +429,15 @@ const data = [
                                     <RekomendasiKostItem item = {item} navigation={this.props.navigation} />
                                 )
                             }}
-                        />   
+                        />    
                     </View>
                     </View>
             </Content>
             <Footer>
                 <FooterTab style={{backgroundColor:'white', borderTopWidth : 1}}>
                     <View style={{flex : 1, alignItems:"center",padding : 20}}>
-                        <Text style={{alignSelf : 'center', color : '#43A047'}}>
-                        {item.harga}
+                        <Text style={{alignSelf : 'center', color : '#43A047', fontWeight : 'bold'}}>
+                        {formatRupiah(item.price, 'Rp. ')} /Bulan
                         </Text>
                     </View>
                     <View style={{flexDirection : 'row', flex : 1 }}>
@@ -455,7 +445,7 @@ const data = [
                             <Text style={{ color : 'red'}}>Hubungi</Text>
                         </Button>
                         <Button style={styles.bottomBarButton}
-                            onPress={()=>this.props.navigation.navigate(this.state.navigationTarget)}
+                            onPress={()=>this.props.navigation.navigate(this.state.navigationTarget, {item : item})}
                         >
                             <Text style={{ color : 'red'}}>Booking</Text>
                         </Button>
