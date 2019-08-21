@@ -7,8 +7,38 @@ import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Tit
 
 
 export default class RegisterForm extends Component {
+constructor(props){
+    super(props)
+    this.state = {
+        data : {name : "",
+        email : "",
+        password : "",
+        password2 : ""
+    }
+}
+}
+
+
+// onChange = (e) => {
+//     this.setState({ [e.target.id]: e.target.value }, () => console.log(this.state));
+//   };
+
+handleChange = (text, state) =>{
+    let convertedText = text
+    this.setState({
+        data :{
+            ...this.state.data,
+            [state] : convertedText
+        }
+        
+    })
+} 
+
+
+
 
     render(){
+        
         return(
             <Container>
                 <Header style={{
@@ -29,20 +59,33 @@ export default class RegisterForm extends Component {
                         <H1 style={{padding : 20, alignSelf :'center'}} >Register</H1>
                         <Form style={{paddingBottom : 10, paddingRight : 13}}>
                             <Item floatingLabel>
-                                <Label>Username</Label>
-                                <Input />
+                                <Label>Name</Label>
+                                <Input value={this.state.data.name}
+                                    onChangeText={(text) =>this.handleChange(text, 'name')}
+                                       />
+                            </Item>
+                            <Item floatingLabel>
+                                <Label>Email </Label>
+                                <Input value={this.state.data.email}
+                                    onChangeText={(text) =>this.handleChange(text, 'email')}
+                                       />
                             </Item>
                             <Item floatingLabel>
                                 <Label>Password</Label>
-                                <Input />
+                                <Input 
+                                    secureTextEntry = {true}
+                                    value={this.state.data.password}
+                                    onChangeText={(text) =>this.handleChange(text, 'password')}
+                                       />
                             </Item>
                             <Item floatingLabel>
-                                <Label>Email</Label>
-                                <Input />
-                            </Item>
-                            <Item floatingLabel>
-                                <Label>No Hp</Label>
-                                <Input />
+                                <Label>Confirm Password</Label>
+                                <Input 
+                                       secureTextEntry = {true}
+                                       value={this.state.data.password2}
+                                       onChangeText={(text) =>this.handleChange(text, 'password2')}
+                                          
+                                       />
                             </Item>
                             
                             
