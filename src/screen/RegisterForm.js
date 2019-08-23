@@ -1,20 +1,28 @@
 import React, {Component } from 'react'
 import {View} from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text, Footer, Form, Item, Input, FooterTab, H1 } from 'native-base'
+import axios from 'axios'
+import apiUrl from '../utils/apiUrl';
+const qs = require('querystring')
 
-
-
-
+const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  }
 
 export default class RegisterForm extends Component {
 constructor(props){
     super(props)
+    
     this.state = {
-        data : {name : "",
+        data : {
+        name : "",
         email : "",
         password : "",
         password2 : ""
-    }
+    },
+    
 }
 }
 
@@ -34,11 +42,26 @@ handleChange = (text, state) =>{
     })
 } 
 
+_submitHandler = async () => {
+    let dataUser = this.state.data
+     await axios.post(`${apiUrl()}/user/register`, qs.stringify(dataUser), config)
+      .then(async (res) => this.props.navigation.navigate('LoginForm'))
+      .catch(function (error) {
+        console.log(dataUser);
+        // Error saving data
+        alert('Something is wrong '+error);
+      })
+    
+  }
 
+//   async (res) => {
+//     // handle success
+//     await AsyncStorage.setItem('token', JSON.stringify(res.data.data.token));
+//     alert('Register Berhasil')
+//     this.props.navigation.navigate('Auth')
 
-
-    render(){
-        
+     render(){
+    
         return(
             <Container>
                 <Header style={{
@@ -57,7 +80,7 @@ handleChange = (text, state) =>{
                 <Content>
                   
                         <H1 style={{padding : 20, alignSelf :'center'}} >Register</H1>
-                        <Form style={{paddingBottom : 10, paddingRight : 13}}>
+                        <Form  style={{paddingBottom : 10, paddingRight : 13}}>
                             <Item floatingLabel>
                                 <Label>Name</Label>
                                 <Input value={this.state.data.name}
@@ -91,7 +114,8 @@ handleChange = (text, state) =>{
                             
                             
                         </Form>
-                        <Button block success style={{margin :10, borderRadius : 10, backgroundColor : '#43A047'}}>
+                        <Button onPress = {this._submitHandler} 
+                        block success style={{margin :10, borderRadius : 10, backgroundColor : '#43A047'}}>
                                 <Text>Register</Text>
                                 
                         </Button>

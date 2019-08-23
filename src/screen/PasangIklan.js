@@ -147,7 +147,7 @@ export default class PasangIklan extends Component{
             title: 'Pilih Gambar',
             storageOptions: {
             skipBackup: true,
-            path: 'images',
+            path: '../../asset/images'
         },}
         ImagePicker.showImagePicker(options, (response) =>{
             

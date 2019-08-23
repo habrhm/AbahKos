@@ -83,7 +83,7 @@ class Talks extends Component {
   }
 
   handleLogout = async () => {
-    await AsyncStorage.setItem('isLogin', '0')
+    await AsyncStorage.removeItem('token')
     this.props.navigation.navigate('Guest')
 }
   

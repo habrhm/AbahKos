@@ -58,18 +58,24 @@ class Explore extends Component {
           data:data
         };
       }
-   
-      checkLogin = async () => {
-        const isLoggedin = await AsyncStorage.getItem('isLogin')
-        if(isLoggedin == 1){
-          this.props.navigation.navigate('Auth')
-          this.setState({
-            navigationLink : 'PasangIklan',
-            pasangIklanText : 'Pasang Iklan'
-          })
-        }else{
-          
+  
+
+    checkLogin = async () => {
+      try {
+        const token = await AsyncStorage.getItem('token');
+        if (token) {
+            this.props.navigation.navigate('Auth')
+            this.setState({
+              navigationLink : 'PasangIklan',
+              pasangIklanText : 'Pasang Iklan'
+            })
+        } else {
+          // alert('Harap Login Untuk Menikmati')
+          this.props.navigation.navigate('Guest')
         }
+      } catch (err) {
+        this.props.navigation.navigate('Guest')
+      }
     }
        componentWillMount() {
         this.setState({

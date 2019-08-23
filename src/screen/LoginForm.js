@@ -2,8 +2,16 @@ import React, {Component } from 'react'
 import {View} from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text,  Form, Item, Input,  H1 } from 'native-base'
 import AsyncStorage from '@react-native-community/async-storage'
-    
-
+import axios from 'axios'
+import apiUrl from '../utils/apiUrl';
+const qs = require('querystring')
+import jwt_decode from "jwt-decode";
+import setAuthToken from '../utils/setAuthToken'   
+const config = {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  } 
 
 export default class LoginForm extends Component {
     constructor(props){
@@ -16,6 +24,28 @@ export default class LoginForm extends Component {
         }
     }
     
+
+    // _submitHandler = async () => {
+    //     let dataUser = this.state.data
+    //      await axios.post(`${apiUrl()}/user/login`, qs.stringify(dataUser), config)
+    //      .then(async res => {
+    //     // Save to localStorage
+
+    //   // Set token to localStorage
+    //   const { token } = res.data;
+    //   AsyncStorage.setItem("jwtToken", token);
+    //   // Set token to Auth header
+    //   setAuthToken(token);
+    //   // Decode token to get user data
+    //   const decoded = jwt_decode(token);
+    //   // Set current user
+    //   dispatch(setCurrentUser(decoded));
+    // })
+    // .catch(err =>{
+    //     payload: err.response.data
+    //   })
+    
+    // }
     handleChange = (text, state) =>{
         let convertedText = text
         this.setState({
@@ -26,7 +56,22 @@ export default class LoginForm extends Component {
             
         })
     } 
-    
+    _submitHandler = async () => {
+        let dataUser = this.state.data
+         await axios.post(`${apiUrl()}/user/login`, qs.stringify(dataUser), config)
+          .then(async (res) => {
+            await AsyncStorage.setItem('token', res.data.token)
+            console.log(res.data.token);      
+            this.props.navigation.navigate('Auth')
+        
+        })
+          .catch(function (error) {
+            console.log(dataUser);
+            // Error saving data
+            alert('Something is wrong '+error);
+          })
+        
+      }
 
     handleLogin = async () => {
         await AsyncStorage.setItem('isLogin', '1')
@@ -74,7 +119,7 @@ export default class LoginForm extends Component {
                             
                         </Form>
                         <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}
-                            onPress={this.handleLogin}
+                            onPress={this._submitHandler}
                         >
                                 <Text>Login</Text>
                                 
