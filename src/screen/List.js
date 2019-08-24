@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, Image,  FlatList, TouchableOpacity}  from 'react
 import {Container, Content, Button, Right} from 'native-base'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Modal from 'react-native-modal';
+import {connect} from 'redux';
+import * as actionDorms from './../redux/actions/dorms';
 
 import KostListItem from '../components/KostListItem'
 import GoBackHeader from '../components/GoBackHeader'

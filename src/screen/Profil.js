@@ -1,8 +1,3 @@
-// import React, {Component } from 'react'
-// import {View} from 'react-native'
-// import {Container, Title, Content, Header, Left, Right, Body, Text, Button, Icon} from 'native-base'
-// import ParallaxScrollView from 'react-native-parallax-scroll-view';
-
 import React, { Component } from 'react';
 import {
   Dimensions,
@@ -13,72 +8,16 @@ import {
   Text,
   View,
 } from 'react-native';
-
-import ParallaxScrollView from 'react-native-parallax-scroll-view';
-import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import AsyncStorage from '@react-native-community/async-storage'
 import { Button } from 'native-base';
 
-// Data
-
-// const data = [
-//     {  img : require('../../asset/bandung.jpg'),
-//      judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-//      jenis: 'Putra',
-//     kamar: 'Tinggal 2 Kamar',
-//     lokasi: 'Cileungsi',
-//     harga: 'Rp 500.000/bulan',
-//     },
-//     {  img : require('../../asset/jakarta.jpg'),
-//     judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
-//     jenis: 'Putri',
-//     kamar: 'Penuh',
-//     lokasi: 'Cileunyi',
-//     harga: 'Rp 1.000.000/bulan',
-//     },
-//     {  img : require('../../asset/bandung.jpg'),
-//     judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-//     jenis: 'Putra',
-//     kamar: 'Tinggal 2 Kamar',
-//     lokasi: 'Cileungsi',
-//     harga: 'Rp 500.000/bulan',
-//     },
-//     {  img : require('../../asset/bandung.jpg'),
-//     judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-//     jenis: 'Putra',
-//     kamar: 'Tinggal 2 Kamar',
-//     lokasi: 'Cileungsi',
-//     harga: 'Rp 500.000/bulan',
-//     },
-//     {  img : require('../../asset/bandung.jpg'),
-//     judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-//     jenis: 'Putra',
-//     kamar: 'Tinggal 2 Kamar',
-//     lokasi: 'Cileungsi',
-//     harga: 'Rp 500.000/bulan',
-//     },
-//   ];
 
 
 class Talks extends Component {
   constructor(props) {
     super(props);
     this.state =  {
-      dataSource: new ListView.DataSource({
-        rowHasChanged: (r1, r2) => r1 !== r2
-      }).cloneWithRows([
-        'Simplicity Matters',
-        'Hammock Driven Development',
-        'Value of Values',
-        'Are We There Yet?',
-        'The Language of the System',
-        'Design, Composition, and Performance',
-        'Clojure core.async',
-        'The Functional Database',
-        'Deconstructing the Database',
-        'Hammock Driven Development',
-        'Value of Values'
-      ])
+     
     };
   }
 
@@ -89,14 +28,13 @@ class Talks extends Component {
   
 
   render() {
-    const { onScroll = () => {} } = this.props;
     return (
       <View>
       
      <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}
                             onPress={this.handleLogout}
                         >
-                                <Text style={{color: 'white'}}>Logout</Text>
+          <Text style={{color: 'white'}}>Logout</Text>
                                 
     </Button>
       </View>

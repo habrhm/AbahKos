@@ -25,27 +25,7 @@ export default class LoginForm extends Component {
     }
     
 
-    // _submitHandler = async () => {
-    //     let dataUser = this.state.data
-    //      await axios.post(`${apiUrl()}/user/login`, qs.stringify(dataUser), config)
-    //      .then(async res => {
-    //     // Save to localStorage
 
-    //   // Set token to localStorage
-    //   const { token } = res.data;
-    //   AsyncStorage.setItem("jwtToken", token);
-    //   // Set token to Auth header
-    //   setAuthToken(token);
-    //   // Decode token to get user data
-    //   const decoded = jwt_decode(token);
-    //   // Set current user
-    //   dispatch(setCurrentUser(decoded));
-    // })
-    // .catch(err =>{
-    //     payload: err.response.data
-    //   })
-    
-    // }
     handleChange = (text, state) =>{
         let convertedText = text
         this.setState({
