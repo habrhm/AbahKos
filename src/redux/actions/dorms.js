@@ -17,9 +17,7 @@ export const addDorm = (value, token) => ({
       headers : {"Authorization" : `Bearer ${token}`}, 
       data : {
           value
-
       }
-      
     })
   })
 

@@ -26,17 +26,17 @@ export default function dorms(state = initialState, action) {
         error: payload.message
       };
 
-    case types.ADD_DORMS:
+    case types.ADD_DORM:
       return {
         ...state,
         isLoading: true
       };
-    case types.ADD_DORMS_FULFILLED:
+    case types.ADD_DORM_FULFILLED:
       return {
         ...state,
         isLoading: false,
       };
-    case types.ADD_DORMS_REJECTED:
+    case types.ADD_DORM_REJECTED:
       return {
         ...state,
         isLoading: false,

@@ -79,7 +79,7 @@ class Explore extends Component {
         this.props.navigation.navigate('Guest')
       }
     }
-       componentWillMount() {
+       componentDidMount() {
         this.checkLogin()
         
 
@@ -111,19 +111,16 @@ class Explore extends Component {
                               <View
                               style={{paddingRight:10}}>
                               <Carousel
-                            //   layout={"stack"}
-                               layoutCardOffset={50}
                                 data={this.state.dataSource}
                                 loop={true}
                                 autoplay={true}
-                                activeAnimationType={"spring"}
-                                onBeforeSnapToItem={(slideIndex) => {
-                                  this.setState({
+                                onSnapToItem={ async (slideIndex) => {
+                                  await this.setState({
                                     position : slideIndex
                                   })
                                 }}
                                 renderItem={({item, index}) => (
-                                <Card>
+                                <Card key={index}>
                                     <Image source={item.url}
                                       style={{  height :150, width :null  }}
       
@@ -166,14 +163,6 @@ class Explore extends Component {
                                 />
                               </View>
                                 
-                              {/* <Slideshow
-                              style={{borderRadius : 10}} 
-                              dataSource={this.state.dataSource}
-                              position={this.state.position}
-                              onPositionChanged={position => this.setState({ position })}
-                              arrowSize = {0}
-                              
-                              /> */}
                               </View>
                              
                               <View style={styles.Row2}>

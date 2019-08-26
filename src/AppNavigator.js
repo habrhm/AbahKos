@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { createAppContainer,createStackNavigator, createSwitchNavigator,  } from 'react-navigation';
 import {createMaterialBottomTabNavigator} from "react-navigation-material-bottom-tabs";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -113,7 +111,7 @@ export const AppNavigator = createSwitchNavigator({
               navigationOptions: {
                 tabBarIcon: ({
                   tintColor
-                }) => < Icon name = "md-search"
+                }) => < Icon name = "md-home"
                 size = {
                   20
                 }
