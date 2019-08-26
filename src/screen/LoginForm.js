@@ -4,9 +4,7 @@ import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Tit
 import AsyncStorage from '@react-native-community/async-storage'
 import axios from 'axios'
 import apiUrl from '../utils/apiUrl';
-const qs = require('querystring')
-import jwt_decode from "jwt-decode";
-import setAuthToken from '../utils/setAuthToken'   
+const qs = require('querystring');
 const config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'

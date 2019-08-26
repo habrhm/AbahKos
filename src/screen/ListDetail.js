@@ -5,7 +5,6 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import Slideshow from 'react-native-slideshow/Slideshow'
 import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -13,96 +12,6 @@ import Fasilitas from '../components/Fasilitas'
 import RekomendasiKostItem from '../components/RekomendasiKostItem'
 
 import {data, formatRupiah} from '../../data'
-
-
-// const data = [
-//     {
-//         id : '1',  
-//         img : [ 
-//             {url :  require('../../asset/kost1-1.jpg')},
-//             {url : require('../../asset/kost1-2.jpg')},
-//             {url : require('../../asset/kost1-3.jpg')},
-//         ],
-//         judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-//         jenis: 'Putra',
-//         kamar: 'Tinggal 2 Kamar',
-//         lokasi: 'Cileungsi',
-//         harga: 500000,
-//         latitude: -6.90389, 
-//         longitude: 107.61861,
-//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-//     },
-//     {  
-//         id : '2',
-//         img : [ 
-//             { url : require('../../asset/kost2-1.jpg')},
-//             { url : require('../../asset/kost2-2.jpg')},
-
-//         ],
-//         judul : 'Kost Abah Jl.Kenangan Yang Lama Hilang',
-//         jenis: 'Putri',
-//         kamar: 'Penuh',
-//         lokasi: 'Cileunyi',
-//         latitude: -6.90389, 
-//         longitude: 107.61861,
-//         harga: 'Rp 1.000.000/bulan',
-//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-//     },
-//     {  
-//         id : '3',
-//         img : [ 
-//             { url : require('../../asset/kost3-1.jpg')},
-//             {url : require('../../asset/kost3-2.jpg')},
-//             { url : require('../../asset/kost3-3.jpg')},
-//             { url : require('../../asset/kost3-4.jpg')},
-//         ],
-//         judul : 'Kost Abah Eman',
-//         jenis: 'Campur',
-//         kamar: 'Tinggal 10 Kamar',
-//         lokasi: 'Cibiru',
-//         harga: 'Rp 500.000/bulan',
-//         latitude: -6.90389, 
-//         longitude: 107.61861,
-//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-//     },
-//     {  
-//         id : '4',
-//         img : [ 
-//             { url : require('../../asset/kost4-1.jpg')},
-//             { url : require('../../asset/kost4-2.jpg')},
-//             { url : require('../../asset/kost4-3.jpg')},
-//         ],
-//         judul : 'Kost Abah Maman',
-//         jenis: 'Putra',
-//         kamar: 'Tinggal 2 Kamar',
-//         lokasi: 'Cikoneng',
-//         harga: 'Rp 1.200.300/bulan',
-//         latitude: -6.90389, 
-//         longitude: 107.61861,
-//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-//     },
-//     {  
-//         id : '5',
-//         img : [ 
-//             { url : require('../../asset/kost5-1.jpg')},
-//             { url : require('../../asset/kost5-2.jpg')},
-//             { url : require('../../asset/kost5-3.jpg')},
-//         ],  
-//         judul : 'Kost Abah Udin',
-//         jenis: 'Putra',
-//         kamar: 'Tinggal 2 Kamar',
-//         lokasi: 'Ciherang',
-//         harga: 'Rp 1.000/bulan',
-//         latitude: -6.90389, 
-//         longitude: 107.61861,
-//         deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
-   
-//     },
-//   ];
-
  class ListDetail extends Component {
     constructor(props) {
         super(props);
@@ -244,13 +153,6 @@ import {data, formatRupiah} from '../../data'
                                     <Image style={{height: 200, width : Dimensions.get('window').width}} source={item} />
                                 )}
                             />
-                            {/* <Slideshow 
-                                    dataSource={item.img}
-                                    position={this.state.position}
-                                    onPositionChanged={position => this.setState({ position })}
-                                    arrowSize = {0}
-                                    
-                                    /> */}
                     </View>
                     <View 
                         style={{

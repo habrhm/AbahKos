@@ -21,14 +21,14 @@ class Login extends Component {
     render(){
         return(
             <Container>
-            <Header style={{backgroundColor: 'white'}}>
+            <Header style={styles.headerContainer}>
              
               <Body style={{padding :10}}>
-                <Title style={{fontWeight:'bold', color:'#43A047'}}>Login</Title>
+                <Title style={styles.headerTitle}>Login</Title>
               </Body>
               <Right />
             </Header>
-            <Content contentContainerStyle={{alignContent:'center', paddingHorizontal :50}} >
+            <Content contentContainerStyle={styles.bodyContainer} >
                 <MaterialIcon name='person' color='#43A047' size = {300} style={{alignSelf:'center'}} />
                 <View style={{marginVertical : 10, }}>
             
@@ -53,9 +53,16 @@ export default Login
 
 const styles = StyleSheet.create({
    
-    container:{
-        paddingTop :5,
+    headerContainer: {
         backgroundColor: 'white'
+    },
+    headerTitle: {
+        fontWeight: 'bold',
+        color: '#43A047'
+    },
+    bodyContainer: {
+        alignContent: 'center',
+        paddingHorizontal: 50
     },
     text: {
         justifyContent: 'center',
@@ -66,22 +73,4 @@ const styles = StyleSheet.create({
         margin:20,
         backgroundColor: 'transparent', 
     },
-    modalTab:{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        borderWidth: 1,
-        // borderRadius: 4,
-        
-    },
-    tabContent:{
-        height  : 200,
-        justifyContent:'center', 
-        alignItems: 'center',
-        
-    },
-    tabText:{
-        fontSize : 20,
-        
-    }
 })

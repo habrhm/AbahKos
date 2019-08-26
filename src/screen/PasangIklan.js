@@ -5,15 +5,19 @@ import { Container, Label, Content, CheckBox, Header, Left, Body, Picker, Right,
 import Mapview, { AnimatedRegion, Marker } from 'react-native-maps';
 import ImagePicker from 'react-native-image-picker'
 
-import GoBackHeader from '../components/GoBackHeader'
+import { connect } from 'react-redux';
+import * as actionDorms from '../redux/actions/dorms';
 
 import Axios from 'axios';
+import AsyncStorage from '@react-native-community/async-storage';
 
 
-export default class PasangIklan extends Component{
+ class PasangIklan extends Component{
     constructor(){
         super()
         this.state = {
+            images : [
+            ],
             province : [],
             selectedProvince : '',
             selectedCity : '',
@@ -156,6 +160,7 @@ export default class PasangIklan extends Component{
             } else if (response.error) {
                 console.log('ImagePicker Error: ', response.error);
             }else{
+            
             const source = { uri: response.uri };
             this.setState({
                 src :    [...this.state.src, source],
@@ -163,10 +168,11 @@ export default class PasangIklan extends Component{
                     ...this.state.data,
                     images : [
                         ...this.state.data.images,
-                        source.uri
+                        response
                     ]
                 }
             })
+
         }
         })
     }
@@ -237,8 +243,68 @@ export default class PasangIklan extends Component{
         
         
     }
-    sendData = () => {
-        console.log(this.state.data)
+    // data: {
+    //     name : '',
+    //     address : '',
+    //     region : {
+    //         latitude: 0, 
+    //         longitude: 0,
+    //     },
+    //     city : '',
+    //     images :[
+            
+    //     ],
+    //     description : '',
+    //     roomNumber : 0,
+    //     roomType : 'Putra',
+    //     roomSize : {
+    //         width : '',
+    //         length : ''
+
+    //     },
+    //     facilities : [
+
+    //     ],
+    //     price : 0
+       
+    // },         
+
+    sendData = async () => {
+        const {
+            name,
+            address,
+            region,
+            city,
+            images,
+            description,
+            facilities,
+            price,
+            roomNumber,
+            roomSize,
+            roomType
+        } = this.state.data
+        //{uri: photo.uri, name: 'image.jpg', type: 'image/jpeg'}
+        let data = new FormData()
+        data.append('name', name)
+        data.append('address', address)
+        data.append('region', region)
+        data.append('city', city)
+        data.append('images', images.map((item, index) => (
+            {
+            uri: item.uri, 
+            name: `${index}image.jpg`, 
+            type: item.type
+        }))
+        )
+        data.append('description', description)
+        data.append('facilities', facilities)
+        data.append('price', price)
+        data.append('roomNumber', roomNumber)
+        data.append('roomSize', roomSize)
+        data.append('roomType', roomType)
+        const token = await AsyncStorage.getItem('token')
+        this.props.addDorm(data, token)
+        
         
     }
     async componentDidMount(){
@@ -246,7 +312,6 @@ export default class PasangIklan extends Component{
         await this.setState({
             province : prov.data.semuaprovinsi
         })
-        console.log(this.state.province)
         
     }
     render(){
@@ -355,13 +420,15 @@ export default class PasangIklan extends Component{
                                     <View style={{paddingVertical:10}}> 
                                     <FlatList    
                                     horizontal={true}
-                                    data = {this.state.src}
+                                    data = {this.state.data.images}
                                     extraData ={this.state}
                                     renderItem={({item}) => 
                                     {
                                     return( 
                                         <Image source={{uri : item.uri}} 
-                                        style={{width : 75, height : 75, marginRight : 10}}
+
+                                        style={{height : 100, width:100, marginRight : 10}}
+                                        resizeMode={"cover"}
                                     />   )}} />
                                 </View>
                                 )
@@ -459,7 +526,7 @@ export default class PasangIklan extends Component{
                 <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}
                     onPress={this.sendData}
                 >
-                        <Text>Selanjutnya</Text>
+                        <Text>Simpan</Text>
                         
                 </Button>
                 
@@ -494,20 +561,18 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
       },
   });
-  const data = {
-    id : '1',  
-    img : [ 
-        {url :  require('../../asset/kost1-1.jpg')},
-        {url : require('../../asset/kost1-2.jpg')},
-        {url : require('../../asset/kost1-3.jpg')},
-    ],
-    judul : 'Kost Abah Jl.Dulu Kalo Jodoh Nikah',
-    jenis: 'Putra',
-    kamar: 'Tinggal 2 Kamar',
-    lokasi: 'Cileungsi',
-    harga: 500000,
-    latitude: -6.90389, 
-    longitude: 107.61861,
-    deskripsi :'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nostrud exercitation ullamco laborisnisi ut aliquip ex ea commodo consequat.  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,sunt in culpa qui officia deserunt mollit anim id est laborum',
 
+  const mapStateToProps = state => {
+    return {
+        dorms: state.dorms
+    }
   }
+  
+  const mapDispatchToProps = dispatch => {
+    return {
+        addDorm: (value, token) => dispatch(actionDorms.addDorm(value, token)),
+    }
+  }
+
+
+  export default connect(mapStateToProps, mapDispatchToProps)(PasangIklan)

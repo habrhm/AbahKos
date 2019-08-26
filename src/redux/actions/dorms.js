@@ -13,9 +13,8 @@ export const addDorm = (value, token) => ({
     type: types.ADD_DORM,
     payload: axios({
       method: 'POST',
-      
       url: "https://reqres.in/api/user",
-      headers : {"Authorization" : `Bearer${token}`}, 
+      headers : {"Authorization" : `Bearer ${token}`}, 
       data : {
           value
 

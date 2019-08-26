@@ -3,17 +3,20 @@ import {View,
         Image,
         StyleSheet,
         ScrollView,
+        Dimensions,
 FlatList,
 TouchableOpacity}  from 'react-native'
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 import {Appbar,
         Text,
         Button
         } from 'react-native-paper'
 import { SearchBar} from 'react-native-elements';
-import Slideshow from 'react-native-slideshow/Slideshow'
+// import Slideshow from 'react-native-slideshow/Slideshow'
 import AsyncStorage from '@react-native-community/async-storage';
 
 import ExploreHeader from '../components/ExploreHeader'
+import { Card, CardItem } from 'native-base';
 
 const data = [
   {  img : require('../../asset/bandung.jpg'), title: 'Bandung'},
@@ -34,7 +37,6 @@ class Explore extends Component {
             navigationLink : 'LoginForm',
             pasangIklanText : 'Login',
           position: 0,
-          interval: null,
           dataSource: [
             {
               
@@ -78,14 +80,7 @@ class Explore extends Component {
       }
     }
        componentWillMount() {
-        this.setState({
-          interval: setInterval(() => {
-            this.setState({
-              position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
-            });
-          }, 2000)
-        });
-       this.checkLogin()
+        this.checkLogin()
         
 
       }
@@ -113,14 +108,72 @@ class Explore extends Component {
                               </View>
                               
                               <View style={styles.Row1}>
-                              <Slideshow
+                              <View
+                              style={{paddingRight:10}}>
+                              <Carousel
+                            //   layout={"stack"}
+                               layoutCardOffset={50}
+                                data={this.state.dataSource}
+                                loop={true}
+                                autoplay={true}
+                                activeAnimationType={"spring"}
+                                onBeforeSnapToItem={(slideIndex) => {
+                                  this.setState({
+                                    position : slideIndex
+                                  })
+                                }}
+                                renderItem={({item, index}) => (
+                                <Card>
+                                    <Image source={item.url}
+                                      style={{  height :150, width :null  }}
+      
+                                    />
+                                  </Card>
+                                )}
+                                sliderWidth={Dimensions.get('window').width -20}
+                                itemWidth={Dimensions.get('window').width - 40}
+                              />
+                                <Pagination
+                                  dotsLength={this.state.dataSource.length}
+                                  activeDotIndex={this.state.position}
+                                  dotColor={'silver'}
+                                  inactiveDotColor={'silver'}
+                                  dotContainerStyle={{
+                                    height : 0,
+                                    paddingHorizontal: 1,
+                                    marginHorizontal: 1,
+                                  }}
+                                  containerStyle={{
+                                    justifyContent : 'center',
+                                    marginVertical : 0,
+                                    paddingVertical : 6
+                                    
+
+                                  }}
+                                  dotStyle={{
+                                      width: 10,
+                                      height: 10,
+                                      borderRadius: 5,
+                                      marginHorizontal: 1,
+                                      paddingHorizontal: 1,
+                                      backgroundColor: 'rgba(255, 255, 255, 0.92)'
+                                  }}
+                                  inactiveDotStyle={{
+                                      // Define styles for inactive dots here
+                                  }}
+                                  inactiveDotOpacity={0.4}
+                                  inactiveDotScale={0.6}
+                                />
+                              </View>
+                                
+                              {/* <Slideshow
                               style={{borderRadius : 10}} 
                               dataSource={this.state.dataSource}
                               position={this.state.position}
                               onPositionChanged={position => this.setState({ position })}
                               arrowSize = {0}
                               
-                              />
+                              /> */}
                               </View>
                              
                               <View style={styles.Row2}>
@@ -141,23 +194,6 @@ class Explore extends Component {
                             </TouchableOpacity>
                               </View>
 
-                              {/* <View style={styles.Row2}>
-                                <View style={styles.View1}>
-                                <Text style={{color : '#fff'}}> Masuk dan daftar di sini</Text>
-                                </View>
-                            <TouchableOpacity
-                                 style={[
-                                    styles.modalTab]
-                                 }
-                               
-                                 onPress={ () => {this.props.navigation.navigate('LoginForm', {})}}
-                                    
-                            >
-                                <Text style={{color : '#fff'}}>
-                                    Login
-                                </Text>
-                            </TouchableOpacity>
-                              </View> */}
                               <View >                          
                                 <Text style={styles.text}> Kota Populer </Text>
                               </View>   
