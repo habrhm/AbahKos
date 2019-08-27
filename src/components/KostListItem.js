@@ -1,116 +1,66 @@
 import React from 'react'
-import {View, StyleSheet, Image, TouchableNativeFeedback,} from 'react-native'
+import { View, StyleSheet, Image, TouchableNativeFeedback, } from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base'
-import {formatRupiah} from '../../data'
+import { formatRupiah } from '../../data'
 
 export default class KostListItem extends React.Component {
-    
-    render() {
-      return (
-        
-        <TouchableNativeFeedback key = {this.props.item.id}
-            onPress={() => this.props.navigation.navigate('ListDetail', {item : this.props.item})}
-        >
-            <Card style={{borderRadius:10}}>
-                <CardItem cardBody style={{ borderRadius:10 }}>
-                <Image source={this.props.item.images[0]} style={{height: 200, width: null, flex: 1, borderRadius:10}}/>
-                </CardItem>
-                <Text
-                    style={{
-                        margin : 5,
-                        marginLeft : 10,
-                        fontSize : 20,
-                        fontWeight : 'bold'
-                    }}
-                >{this.props.item.name} {this.props.item.address}</Text>
-                    
-                <View style={{
-                        margin : 5,
-                        marginLeft : 10,
-                        flexDirection : 'row'
-                        //fontSize : 20,
-                        //fontWeight : 'bold'
-                    }}>
-                    <Text
-                    >{this.props.item.roomType}</Text>
-                    <Text style={{fontWeight : 'bold'}}  
-                    > | </Text>
-                    <Text   
-                    >Tersedia {this.props.item.roomNumber} Kamar</Text>
-                    <Text style={{fontWeight : 'bold'}}   
-                    > | </Text>
-                    <Text
-                    >{this.props.item.city}</Text>
-                </View>
-                <Text
-                    style={{
-                        margin : 5,
-                        marginLeft : 10,
-                        fontSize : 17,
-                        fontWeight : 'bold',
-                        color : 'green'
-                    }}
-                >{formatRupiah(this.props.item.price, 'Rp. ' )} /Bulan</Text>
-                
-              
-            </Card>
-        {/* <View style = {styles.listContainer}>
-            <Image 
-                source={this.props.item.img} 
-                style={styles.img}
-            />
-            <View style={styles.detailContainer}>
-                <Text
-                    style={{color : 'red'}}
-                >{this.props.item.jenis}  </Text>
-                <Text
-                    style={{color : 'red'}}
-                >{this.props.item.kamar}  </Text>
-                <Text
-                    style={{color : 'black'}}
-                >{this.props.item.lokasi}</Text>
-            </View>
-            <Text
-                    style={styles.textHarga}
-                >{this.props.item.harga}</Text>
-            <Text
-                    style={styles.textJudul}
-                >{this.props.item.judul}</Text>
 
-        </View> */}
-        </TouchableNativeFeedback>
-      );
+    render() {
+        return (
+
+            <TouchableNativeFeedback key={this.props.item.id}
+                onPress={() => this.props.navigation.navigate('ListDetail', { item: this.props.item })}
+            >
+                <Card style={{ borderRadius: 10 }}>
+                    <CardItem cardBody style={{ borderRadius: 10 }}>
+                        <Image source={this.props.item.images[0]} style={{ height: 200, width: null, flex: 1, borderRadius: 10 }} />
+                    </CardItem>
+                    <Text
+                        style={{
+                            margin: 5,
+                            marginLeft: 10,
+                            fontSize: 20,
+                            fontWeight: 'bold'
+                        }}
+                    >{this.props.item.name} {this.props.item.address}</Text>
+
+                    <View style={{
+                        margin: 5,
+                        marginLeft: 10,
+                        flexDirection: 'row'
+                    }}>
+                        <Text style={[styles.badge, {backgroundColor:"#43A047", color:'white'}]}
+                        >{this.props.item.roomType}</Text>
+                        <Text style={[styles.badge, {backgroundColor:"#43A047", color:'white'}]}
+                        >Tersedia {this.props.item.roomNumber} Kamar</Text>
+                        <Text style={[styles.badge, {backgroundColor:"#43A047", color:'white'}]}
+                        >{this.props.item.city}</Text>
+                    </View>
+                    <Text
+                        style={{
+                            margin: 5,
+                            marginLeft: 10,
+                            fontSize: 17,
+                            fontWeight: 'bold',
+                            color: '#43A047',
+                            marginBottom : 10
+                        }}
+                    >{formatRupiah(this.props.item.price, 'Rp. ')} /Bulan</Text>
+
+
+                </Card>
+            </TouchableNativeFeedback>
+        );
     }
-  }
-  const styles = StyleSheet.create({
-    img : {
-        width : 350,
-        //flex : 1,
-        height : 200,
-        marginHorizontal : 10
-    },
-    listContainer:{
-        margin : 10,
-        height : 300,
-        //width : width,
-        paddingBottom : 20
-    },
-    detailContainer:{
-        paddingVertical : 5,
-        //width : width,
-        flexDirection : 'row'
-    },
-    textHarga:{
-        fontWeight : 'bold',
-        fontSize : 20,
-        color : 'black'
-    },
-    textJudul:{
-        fontWeight : '100',
-        fontSize : 15,
-        color : 'black'
+}
+const styles = StyleSheet.create({
+    badge : {
+        borderRadius:10,
+        height : 20,
+        paddingHorizontal : 7,
+        marginRight : 5
     }
-    
+
 })
 

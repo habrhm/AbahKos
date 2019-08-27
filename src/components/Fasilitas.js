@@ -1,7 +1,7 @@
 import React , {Component} from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import Ionicon from 'react-native-vector-icons/Ionicons'
-const fasilitas = [
+const facilities = [
     {
         name : 'AC',
         icon : 'md-thermometer',
@@ -41,11 +41,11 @@ export default class Fasilitas extends Component{
     
     render(){
 
-        const selectedFacilities = fasilitas.filter((data) =>(
+        const selectedFacilities = facilities.filter((data) => (
             data.name === this.props.name
         ))
         return(
-        <View style={styles.fasiltas}>
+        <View style={styles.facilities}>
             <Ionicon name={selectedFacilities[0].icon} color='#43A047' size = {30} style={{margin : 5}} />
             <Text>
                 {this.props.name}
@@ -55,7 +55,7 @@ export default class Fasilitas extends Component{
     }
 }
 const styles = StyleSheet.create({
-    fasiltas :{
+    facilities :{
         alignItems:'center',
         marginHorizontal : 15,
     }

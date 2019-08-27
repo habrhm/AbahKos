@@ -3,10 +3,8 @@ import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity } from 'react
 import { Container, Content, Button, Right } from 'native-base'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 import Modal from 'react-native-modal';
-
 import { connect } from 'react-redux';
 import * as actionDorms from '../redux/actions/dorms';
-
 
 import KostListItem from '../components/KostListItem'
 import GoBackHeader from '../components/GoBackHeader'
@@ -18,7 +16,6 @@ import { data } from '../../data'
 class List extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             data: data,
             visibleModal: null,
@@ -34,10 +31,10 @@ class List extends Component {
     }
     componentDidMount() {
         this.props.getDorms()
-      }
+    }
 
     render() {
-        console.log(this.props.dorms);
+        // console.log(this.props.dorms)
         return (
             <Container >
                 <GoBackHeader navigation={this.props.navigation} />
@@ -50,16 +47,10 @@ class List extends Component {
                                 <KostListItem key={item.id.toString()} item={item} navigation={this.props.navigation} />
                             )
                         }} />
-
+                    <View style={{ height: 100 }}></View>
                 </Content>
                 <View
-                    style={{
-                        flexDirection: 'row',
-                        position: "absolute",
-                        bottom: 20,
-                        alignSelf: 'center'
-
-                    }}
+                    style={styles.FABContainer}
                 >
                     <Button style={[styles.FABButton, { borderTopRightRadius: 0, borderBottomRightRadius: 0, borderRightWidth: 0.5, borderColor: '#43A047' }]}
 
@@ -120,12 +111,16 @@ const mapDispatchToProps = dispatch => {
         getDorms: () => dispatch(actionDorms.getDorms()),
     }
 }
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(List)
+
+
 
 const styles = StyleSheet.create({
+    FABContainer : {
+        flexDirection: 'row',
+        position: 'absolute',
+        bottom: 20,
+        alignSelf: 'center'
+    },
     FABButton: {
         backgroundColor: 'white',
         width: 80,
@@ -154,3 +149,5 @@ const styles = StyleSheet.create({
     }
 
 })
+
+export default connect(mapStateToProps, mapDispatchToProps)(List)

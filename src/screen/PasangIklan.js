@@ -2,15 +2,13 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Picker, Right, Button, Icon, Title, Text, Textarea, Form, Item, Input, H1 } from 'native-base'
-import MapView, { AnimatedRegion, Marker } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import ImagePicker from 'react-native-image-picker'
-
 import { connect } from 'react-redux';
-import * as actionDorms from '../redux/actions/dorms';
-
 import Axios from 'axios';
 import AsyncStorage from '@react-native-community/async-storage';
 
+import * as actionDorms from '../redux/actions/dorms';
 
 class PasangIklan extends Component {
     constructor() {
@@ -219,7 +217,10 @@ class PasangIklan extends Component {
     handleChange = (text, state, type) => {
         let convertedText = text
         if (type === 'number') {
-            convertedText = parseInt(text, 10)
+            if (convertedText === '') {
+                convertedText = 0
+            }
+            convertedText = parseInt(convertedText, 10)
         }
         this.setState({
             data: {
@@ -230,7 +231,11 @@ class PasangIklan extends Component {
         })
     }
     handleSizeChange = (text, state) => {
-        const convertedText = parseInt(text, 10)
+        let convertedText = text
+        if (convertedText === '') {
+            convertedText = 0
+        }
+        convertedText = parseInt(convertedText, 10)
         this.setState({
             data: {
                 ...this.state.data,
@@ -256,7 +261,6 @@ class PasangIklan extends Component {
             roomSize,
             roomType
         } = this.state.data
-        //{uri: photo.uri, name: 'image.jpg', type: 'image/jpeg'}
         let data = new FormData()
         data.append('name', name)
         data.append('address', address)
@@ -277,8 +281,6 @@ class PasangIklan extends Component {
         data.append('roomType', roomType)
         const token = await AsyncStorage.getItem('token')
         this.props.addDorm(data, token)
-
-
     }
     async componentDidMount() {
         const prov = await Axios.get('http://dev.farizdotid.com/api/daerahindonesia/provinsi')

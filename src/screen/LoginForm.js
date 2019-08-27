@@ -52,7 +52,7 @@ export default class LoginForm extends Component {
       }
 
     handleLogin = async () => {
-        await AsyncStorage.setItem('isLogin', '1')
+        await AsyncStorage.setItem('token', '1')
         this.props.navigation.navigate('Auth')
     }
     render(){
@@ -97,7 +97,7 @@ export default class LoginForm extends Component {
                             
                         </Form>
                         <Button block success style={{margin :10, borderRadius:10, backgroundColor : '#43A047'}}
-                            onPress={this._submitHandler}
+                            onPress={this.handleLogin}
                         >
                                 <Text>Login</Text>
                                 

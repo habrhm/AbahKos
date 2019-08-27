@@ -18,7 +18,6 @@ export const data = [{
     roomSize : {
         width : 5,
         length : 10
-
     },
     facilities : [
         'TV',

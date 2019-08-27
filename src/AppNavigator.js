@@ -192,6 +192,7 @@ export const AppNavigator = createSwitchNavigator({
 
 
   }, {
+    
     navigationOptions: {
       header: null
     }
