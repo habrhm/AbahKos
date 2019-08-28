@@ -5,7 +5,7 @@ export const getDorms = () => ({
   type: types.GET_DORMS,
   payload: axios({
     method: 'GET',
-    url: "https://reqres.in/api/users"
+    url: 'https://reqres.in/api/users'
   })
 })
 
@@ -13,8 +13,8 @@ export const addDorm = (value, token) => ({
     type: types.ADD_DORM,
     payload: axios({
       method: 'POST',
-      url: "https://reqres.in/api/user",
-      headers : {"Authorization" : `Bearer ${token}`}, 
+      url: 'https://reqres.in/api/user',
+      headers : {'Authorization' : `Bearer ${token}`}, 
       data : {
           value
       }

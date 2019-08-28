@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity } from 'react-native'
 import { Container, Content, Button, Right } from 'native-base'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import Modal from 'react-native-modal';
-import { connect } from 'react-redux';
-import * as actionDorms from '../redux/actions/dorms';
+import Modal from 'react-native-modal'
+import { connect } from 'react-redux'
+import * as actionDorms from '../redux/actions/dorms'
 
 import KostListItem from '../components/KostListItem'
 import GoBackHeader from '../components/GoBackHeader'
@@ -15,12 +15,12 @@ import { data } from '../../data'
 
 class List extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             data: data,
             visibleModal: null,
             sortOption: 'acak'
-        };
+        }
     }
     handelSortOptionPress = (opt) => {
         this.setState(
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: 80,
         paddingHorizontal: 10,
-        alignItems: "center"
+        alignItems: 'center'
     },
     sortModal: {
         justifyContent: 'flex-end',

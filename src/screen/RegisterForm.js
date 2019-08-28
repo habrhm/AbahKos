@@ -2,7 +2,7 @@ import React, {Component } from 'react'
 import {View} from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text, Footer, Form, Item, Input, FooterTab, H1 } from 'native-base'
 import axios from 'axios'
-import apiUrl from '../utils/apiUrl';
+import apiUrl from '../utils/apiUrl'
 const qs = require('querystring')
 
 const config = {
@@ -17,10 +17,10 @@ constructor(props){
     
     this.state = {
         data : {
-        name : "",
-        email : "",
-        password : "",
-        password2 : ""
+        name : '',
+        email : '',
+        password : '',
+        password2 : ''
     },
     
 }
@@ -28,8 +28,8 @@ constructor(props){
 
 
 // onChange = (e) => {
-//     this.setState({ [e.target.id]: e.target.value }, () => console.log(this.state));
-//   };
+//     this.setState({ [e.target.id]: e.target.value }, () => console.log(this.state))
+//   }
 
 handleChange = (text, state) =>{
     let convertedText = text
@@ -47,16 +47,16 @@ _submitHandler = async () => {
      await axios.post(`${apiUrl()}/user/register`, qs.stringify(dataUser), config)
       .then(async (res) => this.props.navigation.navigate('LoginForm'))
       .catch(function (error) {
-        console.log(dataUser);
+        console.log(dataUser)
         // Error saving data
-        alert('Something is wrong '+error);
+        alert('Something is wrong '+error)
       })
     
   }
 
 //   async (res) => {
 //     // handle success
-//     await AsyncStorage.setItem('token', JSON.stringify(res.data.data.token));
+//     await AsyncStorage.setItem('token', JSON.stringify(res.data.data.token))
 //     alert('Register Berhasil')
 //     this.props.navigation.navigate('Auth')
 

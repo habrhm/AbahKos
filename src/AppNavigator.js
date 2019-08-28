@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { createAppContainer,createStackNavigator, createSwitchNavigator,  } from 'react-navigation';
-import {createMaterialBottomTabNavigator} from "react-navigation-material-bottom-tabs";
+import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Explore from './screen/Explore';
@@ -25,7 +25,7 @@ export const AppNavigator = createSwitchNavigator({
               navigationOptions: {
                 tabBarIcon: ({
                   tintColor
-                }) => < Icon name = "md-search"
+                }) => < Icon name = 'md-search'
                 size = {
                   20
                 }
@@ -42,7 +42,7 @@ export const AppNavigator = createSwitchNavigator({
               navigationOptions: {
                 tabBarIcon: ({
                   tintColor
-                }) => < Icon name = "md-heart"
+                }) => < Icon name = 'md-heart'
                 size = {
                   20
                 }
@@ -60,7 +60,7 @@ export const AppNavigator = createSwitchNavigator({
               navigationOptions: {
                 tabBarIcon: ({
                   tintColor
-                }) => < Icon name = "md-person"
+                }) => < Icon name = 'md-person'
                 size = {
                   20
                 }
@@ -111,7 +111,7 @@ export const AppNavigator = createSwitchNavigator({
               navigationOptions: {
                 tabBarIcon: ({
                   tintColor
-                }) => < Icon name = "md-home"
+                }) => < Icon name = 'md-home'
                 size = {
                   20
                 }
@@ -128,7 +128,7 @@ export const AppNavigator = createSwitchNavigator({
               navigationOptions: {
                 tabBarIcon: ({
                   tintColor
-                }) => < Icon name = "md-heart"
+                }) => < Icon name = 'md-heart'
                 size = {
                   20
                 }
@@ -146,7 +146,7 @@ export const AppNavigator = createSwitchNavigator({
               navigationOptions: {
                 tabBarIcon: ({
                   tintColor
-                }) => < Icon name = "md-person"
+                }) => < Icon name = 'md-person'
                 size = {
                   20
                 }

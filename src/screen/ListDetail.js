@@ -5,8 +5,8 @@ import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Rig
 
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
-import { ScrollView, FlatList } from 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-community/async-storage';
+import { ScrollView, FlatList } from 'react-native-gesture-handler'
+import AsyncStorage from '@react-native-community/async-storage'
 
 import Fasilitas from '../components/Fasilitas'
 import RekomendasiKostItem from '../components/RekomendasiKostItem'
@@ -14,7 +14,7 @@ import RekomendasiKostItem from '../components/RekomendasiKostItem'
 import {data, formatRupiah} from '../../data'
  class ListDetail extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
           mapDisplay : 'none',
           imageDisplay : 'flex',  
@@ -50,8 +50,8 @@ import {data, formatRupiah} from '../../data'
     
 
     onMapLayout = () => {
-        this.setState({ isMapReady: true });
-      };
+        this.setState({ isMapReady: true })
+      }
 
     handleOnPressMap = () => {
         this.setState({
@@ -110,8 +110,8 @@ import {data, formatRupiah} from '../../data'
         this.checkLogin()
     }
     render(){
-        const { navigation } = this.props;
-        const item = navigation.getParam('item');
+        const { navigation } = this.props
+        const item = navigation.getParam('item')
         // const img = item.images.map((item)=>(
             
         // ))
@@ -163,8 +163,8 @@ import {data, formatRupiah} from '../../data'
                     }}
                         > 
                         <MapView
-                            provider="google"
-                            mapType="standard"
+                            provider='google'
+                            mapType='standard'
                             style={[styles.map]}
                             region={region}
                             onLayout={this.onMapLayout}
@@ -303,7 +303,7 @@ import {data, formatRupiah} from '../../data'
                             Deskripsi Kost
                         </Text>
                         
-                        <Text style={{textAlign: "justify"}} numberOfLines={this.state.deskrpsiLineNumber} >
+                        <Text style={{textAlign: 'justify'}} numberOfLines={this.state.deskrpsiLineNumber} >
                         {item.description}
                         </Text>
                         <TouchableOpacity onPress={this.handleReadMore}>
@@ -337,19 +337,16 @@ import {data, formatRupiah} from '../../data'
             </Content>
             <Footer>
                 <FooterTab style={{backgroundColor:'white', borderTopWidth : 1}}>
-                    <View style={{flex : 1, alignItems:"center",padding : 20}}>
+                    <View style={{flex : 1, alignItems:'center',padding : 20}}>
                         <Text style={{alignSelf : 'center', color : '#43A047', fontWeight : 'bold'}}>
                         {formatRupiah(item.price, 'Rp. ')} /Bulan
                         </Text>
                     </View>
                     <View style={{flexDirection : 'row', flex : 1 }}>
-                        <Button style={styles.bottomBarButton}>
-                            <Text style={{ color : 'red'}}>Hubungi</Text>
-                        </Button>
                         <Button style={styles.bottomBarButton}
                             onPress={()=>this.props.navigation.navigate(this.state.navigationTarget, {item : item})}
                         >
-                            <Text style={{ color : 'red'}}>Booking</Text>
+                            <Text style={{ color : 'white'}}>Booking</Text>
                         </Button>
                     </View>
                 </FooterTab>
@@ -370,8 +367,8 @@ const styles = StyleSheet.create({
     },
         modalTab:{
             flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: 'center',
+            alignItems: 'center',
             flexDirection : 'row',
             // borderRadius: 4,
             
@@ -387,7 +384,7 @@ const styles = StyleSheet.create({
             marginVertical : 5
         },
         detailContentTitle:{
-            fontWeight : "500",
+            fontWeight : '500',
             fontSize : 17,
             color : 'black'
         },
@@ -399,8 +396,7 @@ const styles = StyleSheet.create({
             alignItems:'center',
             marginHorizontal : 15,
         }, bottomBarButton : {
-            borderWidth : 2, 
-            borderColor : 'red', 
+            backgroundColor : '#43A047',
             borderRadius : 10,
             height : 40,
             marginHorizontal : 5,

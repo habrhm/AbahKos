@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Image,
   StyleSheet,
   Text,
   View,
-} from 'react-native';
+  TouchableOpacity
+} from 'react-native'
 import Ionicon from 'react-native-vector-icons/Ionicons'
 import AsyncStorage from '@react-native-community/async-storage'
-import { Button, Container, Content, Card, Left, Body, CardItem } from 'native-base';
+import { Button, Container, Content, Card, Left, Body, CardItem, Badge, Icon } from 'native-base'
 
 
 
 class Profile extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
 
-    };
+    }
   }
 
   handleLogout = async () => {
@@ -50,19 +51,26 @@ class Profile extends Component {
             style={styles.profileCard}
           >
             <CardItem>
+            <View>
+            <View style={[styles.avatar, {elevation : 5}]}>
             <Image
               source={require('../../asset/bandung.jpg')}
-              style={{
-                width: 75,
-                height: 75,
-                borderRadius: 75 / 2,
-              }}
+              style={styles.avatar}
             />
+            </View>
+            <TouchableOpacity onPress={() => alert('Coming soon')} style={[
+             styles.editIcon, {elevation : 5}]
+            }>
+             <Ionicon name={'md-create'} color={'white'} size={15} 
+             style={
+             styles.editIcon
+            } />
+            </TouchableOpacity>
+            </View>
             <View
                 style={{
                   paddingHorizontal : 10,
                   justifyContent:'space-evenly',
-                  //borderWidth : 0.5,
                   flexGrow : 1,
                   height : 75
                 }}
@@ -117,7 +125,7 @@ class Profile extends Component {
         </Content>
       </Container>
 
-    );
+    )
   }
 }
 
@@ -128,6 +136,12 @@ const styles = StyleSheet.create({
     padding: 10
 
   },
+  avatar : {
+    width: 75,
+    height: 75,
+    borderRadius: 75 / 2,
+    
+  },
   contentCard : {
     borderRadius: 15,
   },
@@ -137,7 +151,19 @@ const styles = StyleSheet.create({
   cardButtonIcon : {
     marginRight : 15
   },
-  cardButtonText : {color : 'black'}
-});
+  cardButtonText : {color : 'black'},
+  editIcon :  {
+    position : 'absolute',
+    backgroundColor : '#43A047',
+    right : 0,
+    bottom : 0,
+    width : 30,
+    height : 30,
+    borderRadius : 30/2,
+    textAlign : 'center',
+    textAlignVertical: 'center',
+    
+  }
+})
 
-export default Profile;
+export default Profile

@@ -2,14 +2,14 @@ import React, {Component} from 'react'
 import {View, StyleSheet, TouchableOpacity} from 'react-native'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
 
-import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text } from 'native-base';
-//import { BorderlessButton, TouchableWithoutFeedback, TouchableHighlight } from 'react-native-gesture-handler';
+import { Container, Header, Title, Content, Button, Left, Right, Body, Icon, Text } from 'native-base'
+//import { BorderlessButton, TouchableWithoutFeedback, TouchableHighlight } from 'react-native-gesture-handler'
 
 
 class Login extends Component {
 
     constructor(){
-        super();
+        super()
         this.state = {
 
         }

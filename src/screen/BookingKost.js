@@ -14,7 +14,7 @@ import {
   Form,
   Item,
   Label
-} from "native-base";
+} from "native-base"
 import Modal from 'react-native-modal'
 import GoBackHeader from '../components/GoBackHeader'
 import {
@@ -26,21 +26,21 @@ import {
 import {
   Divider,
   Input
-} from 'react-native-elements';
+} from 'react-native-elements'
 
 
-import FasilitasMini from '../components/FasilitasMini';
+import FasilitasMini from '../components/FasilitasMini'
 import {
   formatRupiah
-} from '../../data';
+} from '../../data'
 import {
   TextInput
-} from 'react-native-paper';
+} from 'react-native-paper'
 
 
 export default class BookingKost extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       chosenDate: new Date(),
       month: '',
@@ -55,14 +55,14 @@ export default class BookingKost extends Component {
 
 
   setDate = (newDate) => {
-    this.setState({ chosenDate: newDate });
+    this.setState({ chosenDate: newDate })
   }
   onMonthChange = (month) => {
-    this.setState({ month: month });
+    this.setState({ month: month })
   }
   toggleModal = () => {
-    this.setState({ isModalVisible: !this.state.isModalVisible });
-  };
+    this.setState({ isModalVisible: !this.state.isModalVisible })
+  }
 
   handleRadioPress = (state, value) => {
     this.setState({
@@ -87,8 +87,8 @@ export default class BookingKost extends Component {
       bulan.push(i + 1)
 
     }
-    const { navigation } = this.props;
-    const item = navigation.getParam('item');
+    const { navigation } = this.props
+    const item = navigation.getParam('item')
     console.log(item)
     return (
       <Container>

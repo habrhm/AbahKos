@@ -3,8 +3,8 @@ import {View} from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Right, Button, Icon, Title, Text,  Form, Item, Input,  H1 } from 'native-base'
 import AsyncStorage from '@react-native-community/async-storage'
 import axios from 'axios'
-import apiUrl from '../utils/apiUrl';
-const qs = require('querystring');
+import apiUrl from '../utils/apiUrl'
+const qs = require('querystring')
 const config = {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -16,8 +16,8 @@ export default class LoginForm extends Component {
         super(props)
         this.state = {
             data: {
-                email : "",
-                password : "",
+                email : '',
+                password : '',
             }
         }
     }
@@ -39,14 +39,14 @@ export default class LoginForm extends Component {
          await axios.post(`${apiUrl()}/user/login`, qs.stringify(dataUser), config)
           .then(async (res) => {
             await AsyncStorage.setItem('token', res.data.token)
-            console.log(res.data.token);      
+            console.log(res.data.token)      
             this.props.navigation.navigate('Auth')
         
         })
           .catch(function (error) {
-            console.log(dataUser);
+            console.log(dataUser)
             // Error saving data
-            alert('Something is wrong '+error);
+            alert('Something is wrong '+error)
           })
         
       }

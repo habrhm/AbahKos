@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from 'react'
+import { View, Text } from 'react-native'
 
 export default class Wishlist extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-    };
+    }
   }
 
   render() {
@@ -13,6 +13,6 @@ export default class Wishlist extends Component {
       <View>
         <Text> Wishlist </Text>
       </View>
-    );
+    )
   }
 }

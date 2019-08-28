@@ -2,13 +2,13 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, Image, FlatList, TouchableOpacity, Dimensions } from 'react-native'
 import { Container, Label, Content, Header, Left, Body, Picker, Right, Button, Icon, Title, Text, Textarea, Form, Item, Input, H1 } from 'native-base'
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps'
 import ImagePicker from 'react-native-image-picker'
-import { connect } from 'react-redux';
-import Axios from 'axios';
-import AsyncStorage from '@react-native-community/async-storage';
+import { connect } from 'react-redux'
+import Axios from 'axios'
+import AsyncStorage from '@react-native-community/async-storage'
 
-import * as actionDorms from '../redux/actions/dorms';
+import * as actionDorms from '../redux/actions/dorms'
 
 class PasangIklan extends Component {
     constructor() {
@@ -22,7 +22,7 @@ class PasangIklan extends Component {
             cities: [],
 
             src: [],
-            selected: "Putra",
+            selected: 'Putra',
             region: {
                 latitude: -6.90389,
                 longitude: 107.61861,
@@ -111,7 +111,7 @@ class PasangIklan extends Component {
                 ...this.state.data,
                 roomType: value
             }
-        });
+        })
     }
     onProvinceChange = async (value) => {
 
@@ -155,12 +155,12 @@ class PasangIklan extends Component {
         ImagePicker.showImagePicker(options, (response) => {
 
             if (response.didCancel) {
-                console.log('User cancelled image picker');
+                console.log('User cancelled image picker')
             } else if (response.error) {
-                console.log('ImagePicker Error: ', response.error);
+                console.log('ImagePicker Error: ', response.error)
             } else {
 
-                const source = { uri: response.uri };
+                const source = { uri: response.uri }
                 this.setState({
                     src: [...this.state.src, source],
                     data: {
@@ -187,13 +187,13 @@ class PasangIklan extends Component {
             }
         })
         if (this.marker) {
-            this.marker._component.animateMarkerToCoordinate(region, 100);
+            this.marker._component.animateMarkerToCoordinate(region, 100)
         }
 
     }
 
     setModalVisible(visible) {
-        this.setState({ modalVisible: visible });
+        this.setState({ modalVisible: visible })
     }
     async handleCheck(checked, index) {
         fasilitas = this.state.fasilitas
@@ -336,7 +336,7 @@ class PasangIklan extends Component {
                                 >
                                     <Marker.Animated
                                         ref={marker => {
-                                            this.marker = marker;
+                                            this.marker = marker
                                         }}
                                         coordinate={this.state.markerRegion}
                                     />
@@ -359,7 +359,7 @@ class PasangIklan extends Component {
                                 <Label>Provinsi</Label>
                                 <Picker
                                     note
-                                    mode="dropdown"
+                                    mode='dropdown'
                                     style={{ width: 120, color: 'black', }}
                                     selectedValue={this.state.selectedProvince}
                                     onValueChange={this.onProvinceChange}
@@ -375,7 +375,7 @@ class PasangIklan extends Component {
                                 <Label>Kota/Kabupaten</Label>
                                 <Picker
                                     note
-                                    mode="dropdown"
+                                    mode='dropdown'
                                     style={{ width: 120, color: 'black', }}
                                     selectedValue={this.state.selectedCity}
                                     onValueChange={this.onCityChange}
@@ -402,14 +402,14 @@ class PasangIklan extends Component {
                                                     <Image source={{ uri: item.uri }}
 
                                                         style={{ height: 100, width: 100, marginRight: 10 }}
-                                                        resizeMode={"cover"}
+                                                        resizeMode={'cover'}
                                                     />)
                                             }} />
                                     </View>
                                 )
                                 }
 
-                                <Button onPress={this.handleImagePicker} style={{ borderRadius: 10, backgroundColor: '#43A047', width: 200 }}>
+                                <Button onPress={this.handleImagePicker} style={{ borderRadius: 10, backgroundColor: '#43A047', width: 200, justifyContent : 'center' }}>
                                     <Text>Upload Gambar</Text>
                                 </Button>
                             </View>
@@ -426,27 +426,27 @@ class PasangIklan extends Component {
                                 <Textarea
                                     value={this.state.data.description}
                                     onChangeText={(text) => this.handleChange(text, 'description')}
-                                    rowSpan={5} bordered placeholder="Desrkipsi" />
+                                    rowSpan={5} bordered placeholder='Desrkipsi' />
                             </View>
                             <View style={{ paddingLeft: 15, marginTop: 15 }}>
                                 <Label style={{ color: 'black' }}>Jenis Kost</Label>
                                 <Picker
                                     note
-                                    mode="dropdown"
+                                    mode='dropdown'
                                     style={{ width: 120, color: 'black', }}
                                     selectedValue={this.state.selected}
                                     onValueChange={this.onValueChange.bind(this)}
 
                                 >
-                                    <Picker.Item label="Putra" value="Putra" />
-                                    <Picker.Item label="Putri" value="Putri" />
-                                    <Picker.Item label="Campur" value="Campur" />
+                                    <Picker.Item label='Putra' value='Putra' />
+                                    <Picker.Item label='Putri' value='Putri' />
+                                    <Picker.Item label='Campur' value='Campur' />
                                 </Picker>
                             </View>
                             <Item floatingLabel>
                                 <Label>Harga</Label>
                                 <Input
-                                    keyboardType="number-pad"
+                                    keyboardType='number-pad'
                                     value={this.state.data.price.toString()}
                                     onChangeText={(text) => this.handleChange(text, 'price', 'number')}
 
@@ -458,7 +458,7 @@ class PasangIklan extends Component {
                                 <Item floatingLabel style={{ flex: 1 }}>
                                     <Label>Panjang (m)</Label>
                                     <Input
-                                        keyboardType="number-pad"
+                                        keyboardType='number-pad'
                                         value={this.state.data.roomSize.length.toString()}
                                         onChangeText={(text) => this.handleSizeChange(text, 'length')}
                                     />
@@ -467,7 +467,7 @@ class PasangIklan extends Component {
                                 <Item floatingLabel style={{ flex: 1 }}>
                                     <Label>Lebar (m)</Label>
                                     <Input
-                                        keyboardType="number-pad"
+                                        keyboardType='number-pad'
                                         value={this.state.data.roomSize.width.toString()}
                                         onChangeText={(text) => this.handleSizeChange(text, 'width')}
                                     />
@@ -535,7 +535,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center'
     },
-});
+})
 
 const mapStateToProps = state => {
     return {

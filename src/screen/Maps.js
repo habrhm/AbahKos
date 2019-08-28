@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
-});
+})
 
 module.exports = class Maps extends Component {
   render() {
-    const { region } = this.props;
-    console.log(region);
+    const { region } = this.props
+    console.log(region)
 
     return (
       <View style ={styles.container}>
@@ -34,6 +34,6 @@ module.exports = class Maps extends Component {
         >
         </MapView>
       </View>
-    );
+    )
   }
 }
